@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/eg-trainer/static/css/main.31d6cfe0.css",
+    "main.js": "/eg-trainer/static/js/main.31bc62a3.js",
+    "static/js/453.d3476a63.chunk.js": "/eg-trainer/static/js/453.d3476a63.chunk.js",
+    "index.html": "/eg-trainer/index.html",
+    "main.31bc62a3.js.map": "/eg-trainer/static/js/main.31bc62a3.js.map",
+    "453.d3476a63.chunk.js.map": "/eg-trainer/static/js/453.d3476a63.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.31bc62a3.js"
+  ]
+}
