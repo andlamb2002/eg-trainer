@@ -45,9 +45,9 @@ const scrambles = [
   "R U' R' U2 F R U2 R' F",
 
   "R U' R' U R U' R2 F' R F",
-  "U R U R' F' R U2 R' U2 R U R'",
-  "U F R U' R' F' R U R' F' R U R'",
-  "U' R' F R U' R' F R2 U R' F' U2",
+  "R U R' F' R U2 R' U2 R U R'",
+  "F R U' R' F' R U R' F' R U R'",
+  "R' F R U' R' F R2 U R' F'",
   "R' F R F' R' F R U R U2 R'",
   "R' F' R F' R' F' R F' R' F2 R",
   "R' U R2 U' R2 U' F R2 U' R'",
@@ -57,9 +57,9 @@ const scrambles = [
   "R' F R2 U R' F' R U2 R'",
   "R U2 R' F R U' R2 F' R",
   "R U R' F' R U R' U' F R' F' R",
-  "F' R' F R U' R U R' U' R U R' U'",
+  "F' R' F R U' R U R' U' R U R'",
   "R' F R F U2 F U' F2",
-  "U2 F R U' R' U R' F' R U R' F' R",
+  "F R U' R' U R' F' R U R' F' R",
   "R' U2 F R U2 R U' R2 F",
   "R' F' R F U' R' F' R U R' F' R"
 ];
