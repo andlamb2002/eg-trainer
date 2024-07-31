@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Timer from './Components/Timer';
 import ScrambleDisplay from './Components/ScrambleDisplay';
 import TimeList from './Components/TimeList';
@@ -64,7 +64,8 @@ const scrambles = [
 ];
 
 const App = () => {
-  const [currentScramble, setCurrentScramble] = useState(scrambles[Math.floor(Math.random() * scrambles.length)]);
+  const initialScramble = scrambles[Math.floor(Math.random() * scrambles.length)];
+  const [currentScramble, setCurrentScramble] = useState(initialScramble);
   const [alteredScramble, setAlteredScramble] = useState('');
   const [times, setTimes] = useState([]);
 
@@ -96,10 +97,13 @@ const App = () => {
     return newScramble;
   };
 
+  useEffect(() => {
+    setAlteredScramble(transformScramble(currentScramble));
+  }, [currentScramble]);
+
   const updateScramble = () => {
     const newScramble = scrambles[Math.floor(Math.random() * scrambles.length)];
     setCurrentScramble(newScramble);
-    setAlteredScramble(transformScramble(newScramble));
   };
 
   return (
