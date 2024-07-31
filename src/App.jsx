@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState } from 'react';
 import Timer from "./Components/Timer";
 import ScrambleDisplay from "./Components/ScrambleDisplay";

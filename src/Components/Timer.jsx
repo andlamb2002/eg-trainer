@@ -1,4 +1,3 @@
-// components/Timer.jsx
 import React, { useState, useEffect, useRef } from 'react';
 
 const Timer = ({ onStop, times, setTimes }) => {
