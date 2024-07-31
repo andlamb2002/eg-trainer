@@ -8,7 +8,6 @@ const Timer = ({ onStop, times, setTimes }) => {
 
     const toggleTimer = () => {
         if (!runningRef.current) {
-            setDisplayTime(0);
             runningRef.current = true;
             startTimeRef.current = performance.now();
             frameRef.current = requestAnimationFrame(updateTime);
@@ -26,7 +25,7 @@ const Timer = ({ onStop, times, setTimes }) => {
     const updateTime = (timestamp) => {
         if (runningRef.current) {
             const deltaTime = timestamp - startTimeRef.current;
-            setDisplayTime(deltaTime);
+            setDisplayTime(Math.max(deltaTime, 0));
             frameRef.current = requestAnimationFrame(updateTime);
         }
     };
@@ -44,7 +43,7 @@ const Timer = ({ onStop, times, setTimes }) => {
 
     return (
         <div>
-            <div>Timer: {(displayTime / 1000).toFixed(3)} seconds</div>
+            <div className="text-9xl">{(displayTime / 1000).toFixed(3)}</div>
         </div>
     );
 };
