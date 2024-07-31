@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Timer from "./Components/Timer";
-import ScrambleDisplay from "./Components/ScrambleDisplay";
-import TimeList from "./Components/TimeList";
-
+import Timer from './Components/Timer';
+import ScrambleDisplay from './Components/ScrambleDisplay';
+import TimeList from './Components/TimeList';
+import RightSidebar from './Components/RightSidebar';
 
 const scrambles = [
   "R U R' U R U R2 F R2 U' R'",
@@ -63,26 +63,63 @@ const scrambles = [
   "R' F' R F U' R' F' R U R' F' R"
 ];
 
-
 const App = () => {
   const [currentScramble, setCurrentScramble] = useState(scrambles[Math.floor(Math.random() * scrambles.length)]);
+  const [alteredScramble, setAlteredScramble] = useState('');
   const [times, setTimes] = useState([]);
 
+  const transformScramble = (scramble) => {
+    const invertScramble = (scramble) => {
+      if (!scramble) return '';
+      let moves = scramble.split(' ');
+      let inversedMoves = moves.map(move => {
+        if (move.includes("'")) {
+          return move.replace("'", "");
+        } else if (move.includes("2")) {
+          return move;
+        } else {
+          return move + "'";
+        }
+      });
+      return inversedMoves.reverse().join(' ');
+    };
+
+    const addRandomU = (moveSet) => {
+      const options = ["", "U", "U'", "U2"];
+      const start = options[Math.floor(Math.random() * options.length)];
+      const end = options[Math.floor(Math.random() * options.length)];
+      return `${start} ${moveSet} ${end}`.trim();
+    };
+
+    const inversed = invertScramble(scramble);
+    const newScramble = addRandomU(inversed);
+    return newScramble;
+  };
+
   const updateScramble = () => {
-    setCurrentScramble(scrambles[Math.floor(Math.random() * scrambles.length)]);
+    const newScramble = scrambles[Math.floor(Math.random() * scrambles.length)];
+    setCurrentScramble(newScramble);
+    setAlteredScramble(transformScramble(newScramble));
   };
 
   return (
     <div className="app-container">
       <header>
-        <ScrambleDisplay scramble={currentScramble} />
+        <ScrambleDisplay scramble={alteredScramble} />
       </header>
       <main className="main-content">
         <section className="content">
-            <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
+          <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
         </section>
         <aside className="left-sidebar">
           <TimeList times={times} setTimes={setTimes} />
+        </aside>
+        <aside className="right-sidebar">
+          <RightSidebar 
+            scramble={alteredScramble} 
+            times={times} 
+            setTimes={setTimes} 
+          />
         </aside>
       </main>
     </div>
