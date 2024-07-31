@@ -104,6 +104,9 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <div className="font-sans text-primary bg-gray-100 p-4">
+        Hello, Tailwind!
+      </div>
       <header>
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
