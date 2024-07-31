@@ -103,28 +103,19 @@ const App = () => {
   };
 
   return (
-    <div className="app-container">
-      <div className="font-sans text-primary bg-gray-100 p-4">
-        Hello, Tailwind!
-      </div>
-      <header>
+    <div className="grid grid-rows-[10%_90%] grid-cols-4 h-screen">
+      <header className="col-span-4 bg-gray-800 text-white">
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
-      <main className="main-content">
-        <section className="content">
-          <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
-        </section>
-        <aside className="left-sidebar">
-          <TimeList times={times} setTimes={setTimes} />
-        </aside>
-        <aside className="right-sidebar">
-          <RightSidebar 
-            scramble={alteredScramble} 
-            times={times} 
-            setTimes={setTimes} 
-          />
-        </aside>
+      <aside className="col-span-1 bg-gray-200">
+        <TimeList times={times} setTimes={setTimes} />
+      </aside>
+      <main className="col-span-2 flex justify-center items-center">
+        <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
       </main>
+      <aside className="col-span-1 bg-gray-200">
+        <RightSidebar scramble={alteredScramble} times={times} setTimes={setTimes} />
+      </aside>
     </div>
   );
 };
