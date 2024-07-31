@@ -1,6 +1,9 @@
+// App.jsx
 import React, { useState } from 'react';
 import Timer from "./Components/Timer";
 import ScrambleDisplay from "./Components/ScrambleDisplay";
+import TimeList from "./Components/TimeList";
+
 
 const scrambles = [
   "R U R' U R U R2 F R2 U' R'",
@@ -61,19 +64,30 @@ const scrambles = [
   "R' F' R F U' R' F' R U R' F' R"
 ];
 
-function App() {
+
+const App = () => {
   const [currentScramble, setCurrentScramble] = useState(scrambles[Math.floor(Math.random() * scrambles.length)]);
+  const [times, setTimes] = useState([]);
 
   const updateScramble = () => {
     setCurrentScramble(scrambles[Math.floor(Math.random() * scrambles.length)]);
   };
 
   return (
-    <div>
-      <ScrambleDisplay scramble={currentScramble} />
-      <Timer onStop={updateScramble} />
+    <div className="app-container">
+      <header>
+        <ScrambleDisplay scramble={currentScramble} />
+      </header>
+      <main className="main-content">
+        <section className="content">
+            <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
+        </section>
+        <aside className="left-sidebar">
+          <TimeList times={times} setTimes={setTimes} />
+        </aside>
+      </main>
     </div>
   );
-}
+};
 
 export default App;
