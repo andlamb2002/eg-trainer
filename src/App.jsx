@@ -180,25 +180,44 @@ const App = () => {
   }, [currentScramble]);
 
   useEffect(() => {
+    const updateScramble = () => {
+      const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
+      if (enabledCases.length === 0) {
+        console.log("No cases enabled, returning without updating scramble");
+        return; // Do nothing if no cases are enabled
+      }
+      const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
+      const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+      console.log("Updating scramble with toggles:", caseToggles);
+      setCurrentScramble(newScramble);
+    };
+
     updateScramble();
   }, [caseToggles]);
-
-  const updateScramble = () => {
-    const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
-    const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
-    setCurrentScramble(newScramble);
-  };
 
   const toggleCase = (caseName) => {
     setCaseToggles((prevToggles) => {
       const newToggles = { ...prevToggles, [caseName]: !prevToggles[caseName] };
       const enabledCases = Object.values(newToggles).filter(val => val).length;
       if (enabledCases === 0) {
+        console.log("Preventing all cases from being toggled off");
         return prevToggles; // Ensure at least one case is enabled
       }
+      console.log("Toggled case:", caseName, newToggles);
       return newToggles;
     });
+  };
+
+  const onStop = () => {
+    const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
+    if (enabledCases.length === 0) {
+      console.log("No cases enabled, returning without updating scramble");
+      return; // Do nothing if no cases are enabled
+    }
+    const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
+    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    console.log("Updating scramble with toggles:", caseToggles);
+    setCurrentScramble(newScramble);
   };
 
   return (
@@ -210,7 +229,7 @@ const App = () => {
         <TimeList times={times} setTimes={setTimes} />
       </aside>
       <main className="col-span-2 flex justify-center items-center">
-        <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
+        <Timer onStop={onStop} times={times} setTimes={setTimes} />
       </main>
       <aside className="col-span-1 bg-gray-200">
         <RightSidebar 
