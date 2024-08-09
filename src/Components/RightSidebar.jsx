@@ -1,25 +1,30 @@
 import React from 'react';
 
-const RightSidebar = ({ scramble, times, setTimes }) => {
-  const lastSolveTime = times.length > 0 ? (times[times.length - 1] / 1000).toFixed(3) : null;
-
-  const removeLastSolve = () => {
-    setTimes(times.slice(0, -1));
-  };
+const RightSidebar = ({ scramble, caseToggles, toggleCase }) => {
+  const caseButtons = Object.keys(caseToggles);
 
   return (
     <aside>
-      {times.length > 0 ? (
+      {scramble ? (
         <div>
-          <h2>Last Solve</h2>
-          <p>Time: {lastSolveTime} seconds</p>
-          <button onClick={removeLastSolve}>Delete</button>
-          <p>Scramble: {scramble}</p>
+          <h2>Previous Scramble</h2>
+          <p>{scramble}</p>
         </div>
       ) : (
-        <div>
-        </div>
+        <div></div>
       )}
+      <div>
+        <h2>Toggle Cases</h2>
+        {caseButtons.map(caseName => (
+          <button
+            key={caseName}
+            onClick={() => toggleCase(caseName)}
+            style={{ backgroundColor: caseToggles[caseName] ? 'lightgreen' : 'lightcoral' }}
+          >
+            {caseName} Cases
+          </button>
+        ))}
+      </div>
     </aside>
   );
 };

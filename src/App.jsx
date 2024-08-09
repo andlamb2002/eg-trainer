@@ -1,68 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import Timer from './Components/Timer';
 import ScrambleDisplay from './Components/ScrambleDisplay';
-import TimeList from './Components/TimeList';
 import RightSidebar from './Components/RightSidebar';
 
-const scrambles = [
-  "R U R' U R U R2 F R2 U' R'",
-  "F2 U' F' U' F U' F' U F'",
-  "F U2 F U2 F U F2",
-  "R U R' F' U' R U R' U' F R' F' R",
-  "F' R2 F' R2 F' U' F2 R2",
-  "F R U' R' F U' F' R' F' R",
-  "F' U2 R U2 R' U2 F",
-  "R U R' U F' R U R' U' R U R2 F2 R",
-  "F' U' F R' F2 R F' U F",
-  "R U' R' F R U' R2 F R",
-  "R' F R F' R' F R2 U' R'",
-  "R U' R' F R U' R2 F R",
-  "R' F R F' U R U' R' F R U' R'",
-  "F U' R' F2 R F' U2 F'",
-  "F2 R U2 R' U' F2 U2 F'",
-  "R' F R U' R' F R U' R U R' F'",
-  "R' F R2 U' R' U F U F'",
-  "F' U R U2 R' F U2 F",
-
-  "R2 U R U' R2 F R U2 R' F",
-  "R U2 R' U' R' F' R F R' F' R",
-  "R2 U R U' R2 F R U2 R' F",
-  "R U2 R' F R U' R' F' R U R'",
-  "R U' R' F R U' R' F R U R' F'",
-  "F' R' F R2 U R' U' R U R'",
-  "R U2 R' U' R' F' R2 U R'",
-  "R' F R2 U' R' U' R' F2 R",
-  "R U' R2 F R U R U2 R'",
-  "R' F R F' U R U' R' U F R U' R'",
-  "R' U F R2 U' R2 U' F U' R",
-  "R' F R F' U R U' R' U F R U' R'",
-  "R' F' R2 U R' F' R U R'",
-  "R U R2 F' R F R' F' R",
-  "R' F' R2 U R' F' R U R'",
-  "R' U' R U F2 U' F2 R U R",
-  "R U R' F R U R' F U' R U' R'",
-  "R U' R' U2 F R U2 R' F",
-
-  "R U' R' U R U' R2 F' R F",
-  "R U R' F' R U2 R' U2 R U R'",
-  "F R U' R' F' R U R' F' R U R'",
-  "R' F R U' R' F R2 U R' F'",
-  "R' F R F' R' F R U R U2 R'",
-  "R' F' R F' R' F' R F' R' F2 R",
-  "R' U R2 U' R2 U' F R2 U' R'",
-  "R U R2 F' R2 U' R2 U' R2 U' R2 U2 R",
-  "R' U' R U' R' U2 F R2 U' R' U' R' F2 R",
-  "R U2 R' F R U' R2 F' R",
-  "R' F R2 U R' F' R U2 R'",
-  "R U2 R' F R U' R2 F' R",
-  "R U R' F' R U R' U' F R' F' R",
-  "F' R' F R U' R U R' U' R U R'",
-  "R' F R F U2 F U' F2",
-  "F R U' R' U R' F' R U R' F' R",
-  "R' U2 F R U2 R U' R2 F",
-  "R' F' R F U' R' F' R U R' F' R",
-
-  "F U' R' F R U' F2 R U R'",
+const scrambles = {
+  U: [
+    "R U R' U R U R2 F R2 U' R'",
+    "F2 U' F' U' F U' F' U F'",
+    "F U2 F U2 F U F2",
+    "R U R' F' U' R U R' U' F R' F' R",
+    "F' R2 F' R2 F' U' F2 R2",
+    "F R U' R' F U' F' R' F' R",
+    "F' U2 R U2 R' U2 F",
+    "R U R' U F' R U R' U' R U R2 F2 R",
+    "F' U' F R' F2 R F' U F",
+    "R U' R' F R U' R2 F R",
+    "R' F R F' R' F R2 U' R'",
+    "R U' R' F R U' R2 F R",
+    "R' F R F' U R U' R' F R U' R'",
+    "F U' R' F2 R F' U2 F'",
+    "F2 R U2 R' U' F2 U2 F'",
+    "R' F R U' R' F R U' R U R' F'",
+    "R' F R2 U' R' U F U F'",
+    "F' U R U2 R' F U2 F"
+  ],
+  T: [
+    "R2 U R U' R2 F R U2 R' F",
+    "R U2 R' U' R' F' R F R' F' R",
+    "R2 U R U' R2 F R U2 R' F",
+    "R U2 R' F R U' R' F' R U R'",
+    "R U' R' F R U' R' F R U R' F'",
+    "F' R' F R2 U R' U' R U R'",
+    "R U2 R' U' R' F' R2 U R'",
+    "R' F R2 U' R' U' R' F2 R",
+    "R U' R2 F R U R U2 R'",
+    "R' F R F' U R U' R' U F R U' R'",
+    "R' U F R2 U' R2 U' F U' R",
+    "R' F R F' U R U' R' U F R U' R'",
+    "R' F' R2 U R' F' R U R'",
+    "R U R2 F' R F R' F' R",
+    "R' F' R2 U R' F' R U R'",
+    "R' U' R U F2 U' F2 R U R",
+    "R U R' F R U R' F U' R U' R'",
+    "R U' R' U2 F R U2 R' F"
+  ],
+  L: [
+    "R U' R' U R U' R2 F' R F",
+    "R U R' F' R U2 R' U2 R U R'",
+    "F R U' R' F' R U R' F' R U R'",
+    "R' F R U' R' F R2 U R' F'",
+    "R' F R F' R' F R U R U2 R'",
+    "R' F' R F' R' F' R F' R' F2 R",
+    "R' U R2 U' R2 U' F R2 U' R'",
+    "R U R2 F' R2 U' R2 U' R2 U' R2 U2 R",
+    "R' U' R U' R' U2 F R2 U' R' U' R' F2 R",
+    "R U2 R' F R U' R2 F' R",
+    "R' F R2 U R' F' R U2 R'",
+    "R U2 R' F R U' R2 F' R",
+    "R U R' F' R U R' U' F R' F' R",
+    "F' R' F R U' R U R' U' R U R'",
+    "R' F R F U2 F U' F2",
+    "F R U' R' U R' F' R U R' F' R",
+    "R' U2 F R U2 R U' R2 F",
+    "R' F' R F U' R' F' R U R' F' R"
+  ],
+  P: [
+    "F U' R' F R U' F2 R U R'",
     "F2 R U R' U2 R U R' U' F",
     "F U' R' F R U' F2 R U R'",
     "R' F R2 U' R2 F R",
@@ -76,8 +78,9 @@ const scrambles = [
     "F' R U R' U' R U R' F' R U R'",
     "R U' R2 F R U R U' R' U' R' F R F'",
     "F U' R U2 R' F' R U R' F'",
-    "R' U' R' F2 U' R U2 F2 R",
-
+    "R' U' R' F2 U' R U2 F2 R"
+  ],
+  H: [
     "R U' R2 F R F' R' F' R F",
     "F' R' F R F R' F' R2 U R'",
     "F' R2 F' R F R' U R'",
@@ -89,8 +92,9 @@ const scrambles = [
     "R U' R' F U2 F' R' F2 R F'",
     "F' U R' F R F' U F2",
     "R' F R F' R' F R U' R' F R F'",
-    "F' U2 F' U R' F' R F'",
-
+    "F' U2 F' U R' F' R F'"
+  ],
+  S: [
     "R U' R2 F' R F U R' F R",
     "R U R' U F R U' R2 F' R",
     "R U' R2 F' R F U R' F R",
@@ -102,8 +106,9 @@ const scrambles = [
     "R' F R U2 R U' R2 F2 R F'",
     "F' U R U' R' U F R U R'",
     "F' R' F R2 U R' U' F R' F' R",
-    "F' U R U' R' U F R U R'",
-
+    "F' U R U' R' U F R U R'"
+  ],
+  A: [
     "R' F' R U' F' R' F R2 U R'",
     "R' F R2 U R' F' U' R U' R'",
     "R' F' R U' F' R' F R2 U R'",
@@ -122,13 +127,25 @@ const scrambles = [
     "R F' U' F R' U' F' R2 U R2 F' R",
     "R U' R2 F R U' R' F R F'",
     "R F' U' F R' U' F' R2 U R2 F' R"
-];
+  ]
+};
+
+
 
 const App = () => {
-  const initialScramble = scrambles[Math.floor(Math.random() * scrambles.length)];
-  const [currentScramble, setCurrentScramble] = useState(initialScramble);
+  const [currentScramble, setCurrentScramble] = useState('');
   const [alteredScramble, setAlteredScramble] = useState('');
-  const [times, setTimes] = useState([]);
+  const [previousScramble, setPreviousScramble] = useState('');
+  const [solveCount, setSolveCount] = useState(0);
+  const [caseToggles, setCaseToggles] = useState({
+    U: true,
+    T: true,
+    L: true,
+    P: true,
+    H: true,
+    S: true,
+    A: true,
+  });
 
   const transformScramble = (scramble) => {
     const invertScramble = (scramble) => {
@@ -158,13 +175,48 @@ const App = () => {
     return newScramble;
   };
 
+  const updateScramble = () => {
+    const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
+    if (enabledCases.length === 0) return;
+    const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
+    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    setPreviousScramble(currentScramble);
+    setCurrentScramble(newScramble);
+    setSolveCount(solveCount + 1);
+  };
+
+  useEffect(() => {
+    updateScramble(); // Update scramble on page load
+  }, []);
+
   useEffect(() => {
     setAlteredScramble(transformScramble(currentScramble));
   }, [currentScramble]);
 
-  const updateScramble = () => {
-    const newScramble = scrambles[Math.floor(Math.random() * scrambles.length)];
-    setCurrentScramble(newScramble);
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.code === 'Space') {
+        updateScramble();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentScramble, solveCount]);
+
+  const toggleCase = (caseName) => {
+    setCaseToggles(prevToggles => {
+      const newToggles = { ...prevToggles, [caseName]: !prevToggles[caseName] };
+      if (Object.values(newToggles).every(val => !val)) {
+        return prevToggles; // Prevent all cases from being toggled off
+      }
+      setPreviousScramble(currentScramble); // Update previous scramble on case toggle
+      const enabledCases = Object.keys(newToggles).filter(key => newToggles[key]);
+      const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
+      const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+      setCurrentScramble(newScramble); // Update current scramble after toggle
+      return newToggles;
+    });
   };
 
   return (
@@ -172,14 +224,20 @@ const App = () => {
       <header className="col-span-4 bg-gray-800 text-white">
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
-      <aside className="col-span-1 bg-gray-200">
-        <TimeList times={times} setTimes={setTimes} />
+      <aside className="col-span-1 bg-gray-200 flex items-center justify-center">
+        <div>
+          <h2>Total Solves: {solveCount}</h2>
+        </div>
       </aside>
       <main className="col-span-2 flex justify-center items-center">
-        <Timer onStop={updateScramble} times={times} setTimes={setTimes} />
+        {/* Main area could be used for something else in the future */}
       </main>
       <aside className="col-span-1 bg-gray-200">
-        <RightSidebar scramble={alteredScramble} times={times} setTimes={setTimes} />
+        <RightSidebar 
+          scramble={previousScramble} 
+          caseToggles={caseToggles}
+          toggleCase={toggleCase}
+        />
       </aside>
     </div>
   );
