@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ScrambleDisplay from './Components/ScrambleDisplay';
 import RightSidebar from './Components/RightSidebar';
+import LeftSidebar from './Components/LeftSidebar';
 
 const scrambles = {
   U: [
@@ -78,7 +79,10 @@ const scrambles = {
     "F' R U R' U' R U R' F' R U R'",
     "R U' R2 F R U R U' R' U' R' F R F'",
     "F U' R U2 R' F' R U R' F'",
-    "R' U' R' F2 U' R U2 F2 R"
+    "R' U' R' F2 U' R U2 F2 R",
+    "R' F R F' R' F R2 U R' U' R U' R'",
+    "F R U' R' F R U2 R' U F'",
+    "F R' F' R U R U R' U' R' F' R2 U R'"
   ],
   H: [
     "R U' R2 F R F' R' F' R F",
@@ -106,7 +110,13 @@ const scrambles = {
     "R' F R U2 R U' R2 F2 R F'",
     "F' U R U' R' U F R U R'",
     "F' R' F R2 U R' U' F R' F' R",
-    "F' U R U' R' U F R U R'"
+    "F' U R U' R' U F R U R'",
+    "R2 F U' R U' R U' F2",
+    "R U' R' U R U' R' U F R U' R'",
+    "R2 F U' R U' R U' F2",
+    "R' F R2 U' R2 F U R F' U F R'",
+    "R' F R2 U' R' U R U' R' F",
+    "R' F R2 U' R2 F U R F' U F R'"
   ],
   A: [
     "R' F' R U' F' R' F R2 U R'",
@@ -130,21 +140,13 @@ const scrambles = {
   ]
 };
 
-
-
 const App = () => {
   const [currentScramble, setCurrentScramble] = useState('');
   const [alteredScramble, setAlteredScramble] = useState('');
   const [previousScramble, setPreviousScramble] = useState('');
   const [solveCount, setSolveCount] = useState(0);
   const [caseToggles, setCaseToggles] = useState({
-    U: true,
-    T: true,
-    L: true,
-    P: true,
-    H: true,
-    S: true,
-    A: true,
+    U: true, T: true, L: true, P: true, H: true, S: true, A: true,
   });
 
   const transformScramble = (scramble) => {
@@ -175,11 +177,51 @@ const App = () => {
     return newScramble;
   };
 
-  const updateScramble = () => {
+  // Timer states
+  const [timer, setTimer] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  const handleKeyPress = (event) => {
+  if (event.code === 'Space') {
+    if (!isActive) {
+      setStartTime(performance.now());
+      setElapsedTime(0);  // Resetting elapsed time to 0
+      setIsActive(true);
+    } else {
+      setElapsedTime(performance.now() - startTime);
+      setIsActive(false);
+      updateScramble();
+    }
+  }
+};
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isActive, startTime, elapsedTime]);
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setTimer((performance.now() - startTime) / 1000);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, startTime]);
+
+  const generateNewScramble = () => {
     const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
-    if (enabledCases.length === 0) return;
     const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    return scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+  };
+
+  const updateScramble = () => {
+    const newScramble = generateNewScramble();
     setPreviousScramble(currentScramble);
     setCurrentScramble(newScramble);
     setSolveCount(solveCount + 1);
@@ -193,52 +235,25 @@ const App = () => {
     setAlteredScramble(transformScramble(currentScramble));
   }, [currentScramble]);
 
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.code === 'Space') {
-        updateScramble();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [currentScramble, solveCount]);
-
   const toggleCase = (caseName) => {
-    setCaseToggles(prevToggles => {
-      const newToggles = { ...prevToggles, [caseName]: !prevToggles[caseName] };
-      if (Object.values(newToggles).every(val => !val)) {
-        return prevToggles; // Prevent all cases from being toggled off
-      }
-      setPreviousScramble(currentScramble); // Update previous scramble on case toggle
-      const enabledCases = Object.keys(newToggles).filter(key => newToggles[key]);
-      const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-      const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
-      setCurrentScramble(newScramble); // Update current scramble after toggle
-      return newToggles;
-    });
+    const newToggles = { ...caseToggles, [caseName]: !caseToggles[caseName] };
+    const activeCases = Object.values(newToggles).filter(val => val).length;
+    if (activeCases > 0) {
+      setCaseToggles(newToggles);
+      updateScramble();
+    }
   };
 
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-4 h-screen">
-      <header className="col-span-4 bg-gray-800 text-white">
+      <header className="col-span-4 bg-gray-800 text-white flex items-center justify-center p-4">
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
-      <aside className="col-span-1 bg-gray-200 flex items-center justify-center">
-        <div>
-          <h2>Total Solves: {solveCount}</h2>
-        </div>
-      </aside>
-      <main className="col-span-2 flex justify-center items-center">
-        {/* Main area could be used for something else in the future */}
+      <LeftSidebar solveCount={solveCount} elapsedTime={elapsedTime.toFixed(2)} />
+      <main className="col-span-2 flex justify-center items-center font-bold text-6xl">
+        Timer: {timer.toFixed(2)} seconds
       </main>
-      <aside className="col-span-1 bg-gray-200">
-        <RightSidebar 
-          scramble={previousScramble} 
-          caseToggles={caseToggles}
-          toggleCase={toggleCase}
-        />
-      </aside>
+      <RightSidebar previousScramble={previousScramble} caseToggles={caseToggles} toggleCase={toggleCase} />
     </div>
   );
 };

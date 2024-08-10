@@ -1,17 +1,15 @@
 import React from 'react';
 
-const RightSidebar = ({ scramble, caseToggles, toggleCase }) => {
+const RightSidebar = ({ previousScramble, caseToggles, toggleCase }) => {
   const caseButtons = Object.keys(caseToggles);
 
   return (
-    <aside>
-      {scramble ? (
+    <aside className="p-4">
+      {previousScramble && (
         <div>
           <h2>Previous Scramble</h2>
-          <p>{scramble}</p>
+          <p>{previousScramble}</p>
         </div>
-      ) : (
-        <div></div>
       )}
       <div>
         <h2>Toggle Cases</h2>
@@ -19,7 +17,7 @@ const RightSidebar = ({ scramble, caseToggles, toggleCase }) => {
           <button
             key={caseName}
             onClick={() => toggleCase(caseName)}
-            style={{ backgroundColor: caseToggles[caseName] ? 'lightgreen' : 'lightcoral' }}
+            className={`p-2 m-1 ${caseToggles[caseName] ? 'bg-green-500' : 'bg-red-500'}`}
           >
             {caseName} Cases
           </button>
