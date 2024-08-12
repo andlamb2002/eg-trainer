@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ScrambleDisplay from './Components/ScrambleDisplay';
+import Timer from './Components/Timer';
 import RightSidebar from './Components/RightSidebar';
 import LeftSidebar from './Components/LeftSidebar';
 
@@ -183,24 +184,18 @@ const App = () => {
   const [startTime, setStartTime] = useState(null);
   const [elapsedTime, setElapsedTime] = useState(0);
 
-  const handleKeyPress = (event) => {
-  if (event.code === 'Space') {
-    if (!isActive) {
-      setStartTime(performance.now());
-      setElapsedTime(0);  // Resetting elapsed time to 0
-      setIsActive(true);
-    } else {
-      setElapsedTime(performance.now() - startTime);
-      setIsActive(false);
-      updateScramble();
-    }
-  }
-};
+  // Timer functions
+  const startTimer = () => {
+    setStartTime(performance.now());
+    setElapsedTime(0);
+    setIsActive(true);
+  };
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isActive, startTime, elapsedTime]);
+  const stopTimer = () => {
+    setElapsedTime(performance.now() - startTime);
+    setIsActive(false);
+    updateScramble();
+  };
 
   useEffect(() => {
     let interval = null;
@@ -213,6 +208,23 @@ const App = () => {
     }
     return () => clearInterval(interval);
   }, [isActive, startTime]);
+
+  // Handle keypress
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.code === 'Space') {
+        if (!isActive) {
+          startTimer();
+        } else {
+          stopTimer();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isActive, currentScramble, solveCount]);
+
 
   const generateNewScramble = () => {
     const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
@@ -250,9 +262,7 @@ const App = () => {
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
       <LeftSidebar solveCount={solveCount} elapsedTime={elapsedTime.toFixed(2)} />
-      <main className="col-span-2 flex justify-center items-center font-bold text-6xl">
-        Timer: {timer.toFixed(2)} seconds
-      </main>
+      <Timer timer={timer} isActive={isActive} startTimer={startTimer} stopTimer={stopTimer} />
       <RightSidebar previousScramble={previousScramble} caseToggles={caseToggles} toggleCase={toggleCase} />
     </div>
   );
