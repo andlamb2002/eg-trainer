@@ -145,7 +145,7 @@ const App = () => {
   const [currentScramble, setCurrentScramble] = useState('');
   const [alteredScramble, setAlteredScramble] = useState('');
   const [previousScramble, setPreviousScramble] = useState('');
-  const [solveCount, setSolveCount] = useState(0);
+  const [solveTimes, setSolveTimes] = useState([]);
   const [caseToggles, setCaseToggles] = useState({
     U: true, T: true, L: true, P: true, H: true, S: true, A: true,
   });
@@ -192,8 +192,12 @@ const App = () => {
   };
 
   const stopTimer = () => {
-    setElapsedTime(performance.now() - startTime);
+    if (!isActive) return;
+    const endTime = performance.now();
+    const finalTime = (endTime - startTime) / 1000;  // Keep it as a number
     setIsActive(false);
+    setTimer(finalTime);  // Store the number directly
+    setSolveTimes(prevTimes => [...prevTimes, finalTime.toFixed(2)]);  // Format here for storage if necessary
     updateScramble();
   };
 
@@ -223,7 +227,7 @@ const App = () => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isActive, currentScramble, solveCount]);
+  }, [isActive, currentScramble]);
 
 
   const generateNewScramble = () => {
@@ -236,7 +240,10 @@ const App = () => {
     const newScramble = generateNewScramble();
     setPreviousScramble(currentScramble);
     setCurrentScramble(newScramble);
-    setSolveCount(solveCount + 1);
+  };
+
+  const clearSolves = () => {
+    setSolveTimes([]);
   };
 
   useEffect(() => {
@@ -261,7 +268,12 @@ const App = () => {
       <header className="col-span-4 bg-gray-800 text-white flex items-center justify-center p-4">
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
-      <LeftSidebar solveCount={solveCount} elapsedTime={elapsedTime.toFixed(2)} />
+      <LeftSidebar 
+        // solveCount={solveCount} 
+        elapsedTime={elapsedTime.toFixed(2)}
+        solveTimes={solveTimes}
+        clearSolves={clearSolves}
+      />      
       <Timer timer={timer} isActive={isActive} startTimer={startTimer} stopTimer={stopTimer} />
       <RightSidebar previousScramble={previousScramble} caseToggles={caseToggles} toggleCase={toggleCase} />
     </div>
