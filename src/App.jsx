@@ -238,7 +238,7 @@ const App = () => {
 
   const updateScramble = () => {
     const newScramble = generateNewScramble();
-    setPreviousScramble(currentScramble);
+    setPreviousScramble(alteredScramble);
     setCurrentScramble(newScramble);
   };
 
