@@ -247,8 +247,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    updateScramble(); // Update scramble on page load
-  }, []);
+    updateScramble();  // This function now depends on caseToggles state
+  }, [caseToggles]);   // Only re-run the effect if caseToggles changes
 
   useEffect(() => {
     setAlteredScramble(transformScramble(currentScramble));
@@ -259,7 +259,6 @@ const App = () => {
     const activeCases = Object.values(newToggles).filter(val => val).length;
     if (activeCases > 0) {
       setCaseToggles(newToggles);
-      updateScramble();
     }
   };
 
