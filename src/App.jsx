@@ -145,6 +145,7 @@ const App = () => {
   const [currentScramble, setCurrentScramble] = useState('');
   const [alteredScramble, setAlteredScramble] = useState('');
   const [previousScramble, setPreviousScramble] = useState('');
+  const [currentCase, setCurrentCase] = useState(''); // State to track the current case type
   const [solveTimes, setSolveTimes] = useState([]);
   const [caseToggles, setCaseToggles] = useState({
     U: true, T: true, L: true, P: true, H: true, S: true, A: true,
@@ -193,11 +194,17 @@ const App = () => {
 
   const stopTimer = () => {
     if (!isActive) return;
+  
     const endTime = performance.now();
-    const finalTime = (endTime - startTime) / 1000;  // Keep it as a number
+    const rawTime = (endTime - startTime) / 1000;
+    const finalTime = rawTime.toFixed(2); // Round the time here for consistency
+  
     setIsActive(false);
-    setTimer(finalTime);  // Store the number directly
-    setSolveTimes(prevTimes => [...prevTimes, finalTime.toFixed(2)]);  // Format here for storage if necessary
+    setTimer(parseFloat(finalTime)); // Convert string back to number for consistent display
+    setSolveTimes(prevTimes => [
+      ...prevTimes,
+      { time: finalTime, scramble: alteredScramble, caseType: currentCase }
+    ]); // Store the rounded time as a string for consistency in display and calculations
     updateScramble();
   };
 
@@ -233,7 +240,9 @@ const App = () => {
   const generateNewScramble = () => {
     const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
     const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-    return scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    setCurrentCase(randomCase); // Set the current case when generating a new scramble
+    return newScramble;
   };
 
   const updateScramble = () => {

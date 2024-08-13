@@ -4,7 +4,7 @@ const LeftSidebar = ({ solveTimes, clearSolves }) => {
   const meanTime = solveTimes.length > 0 
     ? (
         solveTimes
-          .map(time => parseFloat(time))  // Convert each time string back to a number
+          .map(solve => parseFloat(solve.time))
           .reduce((acc, time) => acc + time, 0) / solveTimes.length
       ).toFixed(2)
     : 0;
@@ -15,7 +15,7 @@ const LeftSidebar = ({ solveTimes, clearSolves }) => {
       <h2>Mean: {meanTime}</h2>
       <div className="overflow-y-auto h-1/2 w-full">
         <h3>Solve Times:</h3>
-        <p>{solveTimes.join(', ') || 'No solves yet'}</p>
+        <p>{solveTimes.map(solve => solve.time).join(', ') || 'No solves yet'}</p>
       </div>
       <button 
         onClick={clearSolves} 
