@@ -150,6 +150,7 @@ const App = () => {
   const [caseToggles, setCaseToggles] = useState({
     U: true, T: true, L: true, P: true, H: true, S: true, A: true,
   });
+  const [selectedSolve, setSelectedSolve] = useState(null);
 
   const transformScramble = (scramble) => {
     const invertScramble = (scramble) => {
@@ -251,6 +252,11 @@ const App = () => {
     setCurrentScramble(newScramble);
   };
 
+  const deleteSolve = solveToDelete => {
+    setSolveTimes(prevTimes => prevTimes.filter(solve => solve !== solveToDelete));
+    setSelectedSolve(null); // Clear the selected solve
+  };
+
   const clearSolves = () => {
     setSolveTimes([]);
   };
@@ -280,9 +286,14 @@ const App = () => {
         elapsedTime={elapsedTime.toFixed(2)}
         solveTimes={solveTimes}
         clearSolves={clearSolves}
-      />      
+        onSelectSolve={setSelectedSolve}
+      />   
       <Timer timer={timer} isActive={isActive} startTimer={startTimer} stopTimer={stopTimer} />
-      <RightSidebar previousScramble={previousScramble} caseToggles={caseToggles} toggleCase={toggleCase} />
+      <RightSidebar 
+        selectedSolve={selectedSolve} 
+        deleteSolve={deleteSolve} 
+        caseToggles={caseToggles} 
+        toggleCase={toggleCase} />
     </div>
   );
 };
