@@ -195,19 +195,23 @@ const App = () => {
 
   const stopTimer = () => {
     if (!isActive) return;
-  
+
     const endTime = performance.now();
     const rawTime = (endTime - startTime) / 1000;
     const finalTime = rawTime.toFixed(2); // Round the time here for consistency
-  
+
+    const newSolve = {
+      time: finalTime,
+      scramble: alteredScramble,
+      caseType: currentCase
+    };
+
     setIsActive(false);
     setTimer(parseFloat(finalTime)); // Convert string back to number for consistent display
-    setSolveTimes(prevTimes => [
-      ...prevTimes,
-      { time: finalTime, scramble: alteredScramble, caseType: currentCase }
-    ]); // Store the rounded time as a string for consistency in display and calculations
+    setSolveTimes(prevTimes => [...prevTimes, newSolve]);
+    setSelectedSolve(newSolve); // Set the new solve as the selected solve
     updateScramble();
-  };
+};
 
   useEffect(() => {
     let interval = null;
@@ -259,6 +263,7 @@ const App = () => {
 
   const clearSolves = () => {
     setSolveTimes([]);
+    setSelectedSolve(null);  // Also clear the selected solve when clearing all solves
   };
 
   useEffect(() => {
