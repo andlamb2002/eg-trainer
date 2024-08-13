@@ -1,12 +1,18 @@
 import React from 'react';
 
-const LeftSidebar = ({ solveCount, elapsedTime, solveTimes, clearSolves }) => {
-  const meanTime = solveTimes.length > 0 ? (solveTimes.reduce((acc, time) => acc + time, 0) / solveTimes.length).toFixed(2) : 0;
+const LeftSidebar = ({ solveTimes, clearSolves }) => {
+  const meanTime = solveTimes.length > 0 
+    ? (
+        solveTimes
+          .map(time => parseFloat(time))  // Convert each time string back to a number
+          .reduce((acc, time) => acc + time, 0) / solveTimes.length
+      ).toFixed(2)
+    : 0;
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-4">
+    <div className="flex flex-col h-full p-4">
       <h2>Total Solves: {solveTimes.length}</h2>
-      <h2>Mean Time: {meanTime} seconds</h2>
+      <h2>Mean: {meanTime}</h2>
       <div className="overflow-y-auto h-1/2 w-full">
         <h3>Solve Times:</h3>
         <p>{solveTimes.join(', ') || 'No solves yet'}</p>

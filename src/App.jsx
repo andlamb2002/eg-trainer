@@ -269,7 +269,6 @@ const App = () => {
         <ScrambleDisplay scramble={alteredScramble} />
       </header>
       <LeftSidebar 
-        // solveCount={solveCount} 
         elapsedTime={elapsedTime.toFixed(2)}
         solveTimes={solveTimes}
         clearSolves={clearSolves}
