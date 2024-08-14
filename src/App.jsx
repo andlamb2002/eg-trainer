@@ -9,11 +9,20 @@ const App = () => {
   const [currentScramble, setCurrentScramble] = useState('');
   const [alteredScramble, setAlteredScramble] = useState('');
   const [currentCase, setCurrentCase] = useState(''); // State to track the current case type
-  const [solveTimes, setSolveTimes] = useState([]);
-  const [caseToggles, setCaseToggles] = useState({
-    U: true, T: true, L: true, P: true, H: true, S: true, A: true,
-  });
+  const [solveTimes, setSolveTimes] = useState(
+    JSON.parse(localStorage.getItem('solveTimes')) || []
+  );  
+  const [caseToggles, setCaseToggles] = useState(
+    JSON.parse(localStorage.getItem('caseToggles')) || {
+      U: true, T: true, L: true, P: true, H: true, S: true, A: true,
+    }
+  );
   const [selectedSolve, setSelectedSolve] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
+    localStorage.setItem('caseToggles', JSON.stringify(caseToggles));
+  }, [solveTimes, caseToggles]);
 
   // Timer states
   const [timer, setTimer] = useState(0);
