@@ -1,33 +1,35 @@
 import React from 'react';
 
-const LeftSidebar = ({ solveTimes, clearSolves, onSelectSolve }) => {
-  const meanTime = solveTimes.length > 0 
-    ? (
-        solveTimes
-          .map(solve => parseFloat(solve.time))
-          .reduce((acc, time) => acc + time, 0) / solveTimes.length
-      ).toFixed(2)
-    : 0;
+const LeftSidebar = ({ caseToggles, toggleCase }) => {
+  const renderCaseButtons = (caseType) => {
+    return Object.keys(caseToggles[caseType]).map((caseName) => (
+      <button
+        key={caseType + caseName}
+        onClick={() => toggleCase(caseType, caseName)}
+        className={`p-2 m-1 ${caseToggles[caseType][caseName] ? 'bg-green-500' : 'bg-red-500'} text-white rounded hover:opacity-90`}
+      >
+        {caseName} Cases
+      </button>
+    ));
+  };
+  
 
   return (
-    <div className="flex flex-col h-full p-4">
-      <h2>Total Solves: {solveTimes.length}</h2>
-      <h2>Mean: {meanTime} seconds</h2>
-      <div className="overflow-y-auto h-1/2 w-full">
-        <h3>Solve Times:</h3>
-        <p>
-          {solveTimes.map((solve, index) => (
-            <span key={index} onClick={() => onSelectSolve(solve)} style={{ cursor: 'pointer', color: 'blue' }}>
-              {solve.time}
-              {index < solveTimes.length - 1 ? ', ' : ''}
-            </span>
-          ))}
-        </p>
+    <aside className="p-4">
+      <h1 className="mb-4 text-2xl">Toggle Cases</h1>
+      <div className="mb-4">
+        <h3 className="text-xl">CLL</h3>
+        <div className="flex flex-wrap">
+          {renderCaseButtons('CLL')}
+        </div>
       </div>
-      <button onClick={clearSolves} className="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 transition-colors">
-        Clear All Solves
-      </button>
-    </div>
+      <div>
+        <h3 className="text-xl">EG1</h3>
+        <div className="flex flex-wrap">
+          {renderCaseButtons('EG1')}
+        </div>
+      </div>
+    </aside>
   );
 };
 

@@ -29,12 +29,10 @@ const App = () => {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [startTime, setStartTime] = useState(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
 
   // Timer functions
   const startTimer = () => {
     setStartTime(performance.now());
-    setElapsedTime(0);
     setIsActive(true);
   };
 
@@ -155,22 +153,31 @@ const App = () => {
   
 
   return (
-    <div className="grid grid-rows-[10%_90%] grid-cols-4 h-screen">
-      <header className="col-span-4 bg-gray-800 text-white flex items-center justify-center p-4">
-        <ScrambleDisplay scramble={alteredScramble} />
+    <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
+      <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
+        <ScrambleDisplay 
+          scramble={alteredScramble} 
+        />
       </header>
       <LeftSidebar 
-        elapsedTime={elapsedTime.toFixed(2)}
-        solveTimes={solveTimes}
-        clearSolves={clearSolves}
-        onSelectSolve={setSelectedSolve}
-      />   
-      <Timer timer={timer} isActive={isActive} startTimer={startTimer} stopTimer={stopTimer} />
-      <RightSidebar 
-        selectedSolve={selectedSolve} 
-        deleteSolve={deleteSolve} 
         caseToggles={caseToggles} 
-        toggleCase={toggleCase} />
+        toggleCase={toggleCase}
+      />   
+      <main className="flex justify-center items-center font-bold text-6xl">
+        <Timer 
+          timer={timer} 
+          isActive={isActive} 
+          startTimer={startTimer} 
+          stopTimer={stopTimer} 
+        />
+      </main>
+      <RightSidebar 
+        solveTimes={solveTimes}
+        onSelectSolve={setSelectedSolve}
+        selectedSolve={selectedSolve} 
+        deleteSolve={deleteSolve}
+        clearSolves={clearSolves}
+      />
     </div>
   );
 };
