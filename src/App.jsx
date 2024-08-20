@@ -89,7 +89,7 @@ const App = () => {
   const generateNewScramble = () => {
     const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
     const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-    const newScramble = scrambles[randomCase][Math.floor(Math.random() * scrambles[randomCase].length)];
+    const newScramble = scrambles.EG1[randomCase][Math.floor(Math.random() * scrambles.EG1[randomCase].length)];
     setCurrentCase(randomCase); // Set the current case when generating a new scramble
     return newScramble;
   };
