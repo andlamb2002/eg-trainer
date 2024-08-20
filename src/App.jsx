@@ -12,9 +12,15 @@ const App = () => {
   const [solveTimes, setSolveTimes] = useState(
     JSON.parse(localStorage.getItem('solveTimes')) || []
   );  
+  // const [caseToggles, setCaseToggles] = useState(
+  //   JSON.parse(localStorage.getItem('caseToggles')) || {
+  //     U: true, T: true, L: true, P: true, H: true, S: true, A: true,
+  //   }
+  // );
   const [caseToggles, setCaseToggles] = useState(
     JSON.parse(localStorage.getItem('caseToggles')) || {
-      U: true, T: true, L: true, P: true, H: true, S: true, A: true,
+      CLL: { U: true, T: true, L: true, P: true, H: true, S: true, A: true },
+      EG1: { U: true, T: true, L: true, P: true, H: true, S: true, A: true },
     }
   );
   const [selectedSolve, setSelectedSolve] = useState(null);
@@ -87,10 +93,23 @@ const App = () => {
 
 
   const generateNewScramble = () => {
-    const enabledCases = Object.keys(caseToggles).filter(key => caseToggles[key]);
-    const randomCase = enabledCases[Math.floor(Math.random() * enabledCases.length)];
-    const newScramble = scrambles.EG1[randomCase][Math.floor(Math.random() * scrambles.EG1[randomCase].length)];
-    setCurrentCase(randomCase); // Set the current case when generating a new scramble
+    // Get all enabled CLL and EG1 cases
+    const enabledCLLCases = Object.keys(caseToggles.CLL).filter(key => caseToggles.CLL[key]);
+    const enabledEG1Cases = Object.keys(caseToggles.EG1).filter(key => caseToggles.EG1[key]);
+  
+    // Combine the two arrays
+    const combinedCases = [...enabledCLLCases.map(caseName => ({ type: 'CLL', name: caseName })),
+                           ...enabledEG1Cases.map(caseName => ({ type: 'EG1', name: caseName }))];
+  
+    // Randomly select a case based on the proportion of toggled cases
+    const randomCaseIndex = Math.floor(Math.random() * combinedCases.length);
+    const selectedCase = combinedCases[randomCaseIndex];
+  
+    // Retrieve the scramble based on the selected case type and name
+    const newScramble = scrambles[selectedCase.type][selectedCase.name][Math.floor(Math.random() * scrambles[selectedCase.type][selectedCase.name].length)];
+    
+    // Set the current case type and scramble
+    setCurrentCase(selectedCase.name);
     return newScramble;
   };
 
@@ -117,13 +136,21 @@ const App = () => {
     setAlteredScramble(transformScramble(currentScramble));
   }, [currentScramble]);
 
-  const toggleCase = (caseName) => {
-    const newToggles = { ...caseToggles, [caseName]: !caseToggles[caseName] };
-    const activeCases = Object.values(newToggles).filter(val => val).length;
+  const toggleCase = (caseType, caseName) => {
+    const newToggles = { 
+      ...caseToggles, 
+      [caseType]: {
+        ...caseToggles[caseType],
+        [caseName]: !caseToggles[caseType][caseName]
+      }
+    };
+    const activeCases = Object.values(newToggles.CLL).filter(val => val).length + 
+                        Object.values(newToggles.EG1).filter(val => val).length;
     if (activeCases > 0) {
       setCaseToggles(newToggles);
     }
   };
+  
 
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-4 h-screen">
