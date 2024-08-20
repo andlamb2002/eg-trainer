@@ -14,7 +14,6 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
     <aside className="p-4">
       {selectedSolve ? (
         <div>
-          <h2>Selected Solve Details</h2>
           <p>Scramble: {selectedSolve.scramble}</p>
           <p>Time: {selectedSolve.time} seconds</p>
           <p>Case Type: {selectedSolve.caseType}</p>
@@ -30,10 +29,9 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
       )}
       <hr className="my-4" />
       <div className="flex flex-col h-full">
-        <h2>Total Solves: {solveTimes.length}</h2>
+        <h2>Solves: {solveTimes.length}</h2>
         <h2>Mean: {meanTime} seconds</h2>
         <div className="overflow-y-auto h-1/2 w-full">
-          <h3>Solve Times:</h3>
           <p>
             {solveTimes.map((solve, index) => (
               <span key={index} onClick={() => onSelectSolve(solve)} style={{ cursor: 'pointer', color: 'blue' }}>
