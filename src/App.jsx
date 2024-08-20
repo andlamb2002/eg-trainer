@@ -113,14 +113,20 @@ const App = () => {
     setCurrentScramble(newScramble);
   };
 
-  const deleteSolve = solveToDelete => {
-    setSolveTimes(prevTimes => prevTimes.filter(solve => solve !== solveToDelete));
-    setSelectedSolve(null); // Clear the selected solve
+  const deleteSolve = (solveToDelete) => {
+    const confirmed = window.confirm("Delete this solve?");
+    if (confirmed) {
+      setSolveTimes(prevTimes => prevTimes.filter(solve => solve !== solveToDelete));
+      setSelectedSolve(null); // Clear the selected solve
+    }
   };
 
   const clearSolves = () => {
-    setSolveTimes([]);
-    setSelectedSolve(null);  // Also clear the selected solve when clearing all solves
+    const confirmed = window.confirm("Clear all solves?");
+    if (confirmed) {
+      setSolveTimes([]);
+      setSelectedSolve(null);  // Also clear the selected solve when clearing all solves
+    }
   };
 
   useEffect(() => {
