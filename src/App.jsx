@@ -74,6 +74,7 @@ const App = () => {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.code === 'Space') {
+        event.preventDefault();  
         if (!isActive) {
           startTimer();
         } else {
