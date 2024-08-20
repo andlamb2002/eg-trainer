@@ -12,11 +12,6 @@ const App = () => {
   const [solveTimes, setSolveTimes] = useState(
     JSON.parse(localStorage.getItem('solveTimes')) || []
   );  
-  // const [caseToggles, setCaseToggles] = useState(
-  //   JSON.parse(localStorage.getItem('caseToggles')) || {
-  //     U: true, T: true, L: true, P: true, H: true, S: true, A: true,
-  //   }
-  // );
   const [caseToggles, setCaseToggles] = useState(
     JSON.parse(localStorage.getItem('caseToggles')) || {
       CLL: { U: true, T: true, L: true, P: true, H: true, S: true, A: true },
@@ -53,7 +48,7 @@ const App = () => {
     const newSolve = {
       time: finalTime,
       scramble: alteredScramble,
-      caseType: currentCase
+      caseType: `${currentCase.split(' ')[0]} ${currentCase.split(' ')[1]}` // e.g., 'CLL U'
     };
 
     setIsActive(false);
@@ -109,7 +104,7 @@ const App = () => {
     const newScramble = scrambles[selectedCase.type][selectedCase.name][Math.floor(Math.random() * scrambles[selectedCase.type][selectedCase.name].length)];
     
     // Set the current case type and scramble
-    setCurrentCase(selectedCase.name);
+    setCurrentCase(`${selectedCase.type} ${selectedCase.name}`);
     return newScramble;
   };
 

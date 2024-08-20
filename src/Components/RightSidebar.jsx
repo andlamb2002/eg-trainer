@@ -8,7 +8,7 @@ const RightSidebar = ({ selectedSolve, deleteSolve, caseToggles, toggleCase }) =
         onClick={() => toggleCase(caseType, caseName)}
         className={`p-2 m-1 ${caseToggles[caseType][caseName] ? 'bg-green-500' : 'bg-red-500'} text-white rounded hover:opacity-90`}
       >
-        {caseType} {caseName} Cases
+        {caseName} Cases
       </button>
     ));
   };
@@ -35,13 +35,13 @@ const RightSidebar = ({ selectedSolve, deleteSolve, caseToggles, toggleCase }) =
       <div>
         <h2>Toggle Cases</h2>
         <div className="mb-4">
-          <h3>CLL Cases</h3>
+          <h3>CLL</h3>
           <div className="flex flex-wrap">
             {renderCaseButtons('CLL')}
           </div>
         </div>
         <div>
-          <h3>EG1 Cases</h3>
+          <h3>EG1</h3>
           <div className="flex flex-wrap">
             {renderCaseButtons('EG1')}
           </div>
