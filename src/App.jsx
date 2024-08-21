@@ -38,23 +38,23 @@ const App = () => {
 
   const stopTimer = () => {
     if (!isActive) return;
-
+  
     const endTime = performance.now();
     const rawTime = (endTime - startTime) / 1000;
     const finalTime = rawTime.toFixed(2); // Round the time here for consistency
-
+  
     const newSolve = {
       time: finalTime,
       scramble: alteredScramble,
-      caseType: `${currentCase.split(' ')[0]} ${currentCase.split(' ')[1]}` // e.g., 'CLL U'
+      caseType: currentCase // Store the full case type (e.g., 'CLL U Case 1')
     };
-
+  
     setIsActive(false);
     setTimer(parseFloat(finalTime)); // Convert string back to number for consistent display
     setSolveTimes(prevTimes => [...prevTimes, newSolve]);
     setSelectedSolve(newSolve); // Set the new solve as the selected solve
     updateScramble();
-};
+  };
 
   useEffect(() => {
     let interval = null;
@@ -99,11 +99,16 @@ const App = () => {
     const randomCaseIndex = Math.floor(Math.random() * combinedCases.length);
     const selectedCase = combinedCases[randomCaseIndex];
   
-    // Retrieve the scramble based on the selected case type and name
-    const newScramble = scrambles[selectedCase.type][selectedCase.name][Math.floor(Math.random() * scrambles[selectedCase.type][selectedCase.name].length)];
-    
+    // Choose a random caseId from the available caseIds in that case category
+    const caseSet = scrambles[selectedCase.type][selectedCase.name];
+    const randomCaseIdIndex = Math.floor(Math.random() * caseSet.length);
+    const selectedCaseId = caseSet[randomCaseIdIndex];
+  
+    // Retrieve the scramble from the algs list based on the selected caseId
+    const newScramble = selectedCaseId.algs[Math.floor(Math.random() * selectedCaseId.algs.length)];
+  
     // Set the current case type and scramble
-    setCurrentCase(`${selectedCase.type} ${selectedCase.name}`);
+    setCurrentCase(`${selectedCase.type}-${selectedCase.name}${selectedCaseId.caseId}`);
     return newScramble;
   };
 
