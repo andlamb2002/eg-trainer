@@ -39,6 +39,7 @@ const App = () => {
     }
   });
   const [selectedSolve, setSelectedSolve] = useState(null);
+  const [scrambleError, setScrambleError] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
@@ -52,9 +53,12 @@ const App = () => {
 
   // Timer functions
   const startTimer = () => {
-    setStartTime(performance.now());
-    setIsActive(true);
+    if (!scrambleError) {
+      setStartTime(performance.now());
+      setIsActive(true);
+    }
   };
+  
 
   const stopTimer = () => {
     if (!isActive) return;
@@ -93,39 +97,39 @@ const App = () => {
     const handleKeyPress = (event) => {
       if (event.code === 'Space') {
         event.preventDefault();  
-        if (!isActive) {
+        if (!isActive && !scrambleError) {
           startTimer();
-        } else {
+        } else if (isActive) {
           stopTimer();
         }
       }
     };
-
+  
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isActive, currentScramble]);
+  }, [isActive, currentScramble, scrambleError]);
 
   const generateNewScramble = () => {
-    // Filter cases based on toggles
     const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
-        Object.entries(cases).flatMap(([caseName, toggles]) =>
-            toggles.map((toggle, index) => toggle ? { type, caseName, caseId: index } : null).filter(Boolean)
-        )
+      Object.entries(cases).flatMap(([caseName, toggles]) =>
+        toggles.map((toggle, index) => toggle ? { type, caseName, caseId: index } : null).filter(Boolean)
+      )
     );
-
+  
     if (filteredCases.length === 0) {
-        console.log("No cases are selected for generating scrambles.");
-        return "Please select at least one case to generate scrambles."; // Provide feedback if no cases are enabled
+      setScrambleError(true);
+      return;
     }
-
-    // Select a random case from the filtered list
+  
+    setScrambleError(false);
+  
     const selectedCase = filteredCases[Math.floor(Math.random() * filteredCases.length)];
     const caseDetails = scrambles[selectedCase.type][selectedCase.caseName][selectedCase.caseId];
     const newScramble = caseDetails.algs[Math.floor(Math.random() * caseDetails.algs.length)];
     
     setCurrentCase(`${selectedCase.type} ${selectedCase.caseName} Case ${selectedCase.caseId + 1}`);
     return newScramble;
-};
+  };
 
   const updateScramble = () => {
     const newScramble = generateNewScramble();
@@ -157,56 +161,39 @@ const App = () => {
   }, [currentScramble]);
   
   const toggleCase = (caseType, caseName, caseIndex) => {
-    const totalSelectedCases = Object.values(caseToggles).flatMap(type => 
-        Object.values(type).flatMap(cases => cases)
-    ).filter(isSelected => isSelected).length;
-    
-    if (totalSelectedCases === 1 && caseToggles[caseType][caseName][caseIndex]) {
-        return;
-    }
-
     const newToggles = { 
-        ...caseToggles, 
-        [caseType]: { 
-            ...caseToggles[caseType], 
-            [caseName]: caseToggles[caseType][caseName].map((status, index) => 
-                index === caseIndex ? !status : status
-            ) 
-        }
-    };
-
-    setCaseToggles(newToggles);
-};
-
-const toggleAllCases = (caseType, caseName) => {
-  const totalSelectedCases = Object.values(caseToggles).flatMap(type => 
-      Object.values(type).flatMap(cases => cases)
-  ).filter(isSelected => isSelected).length;
-
-  const allSelected = caseToggles[caseType][caseName].every(status => status);
-
-  // Prevent toggling all off if only one case is selected across the entire app
-  if (totalSelectedCases === caseToggles[caseType][caseName].length && allSelected) {
-      return;
-  }
-
-  const newToggles = { 
       ...caseToggles, 
       [caseType]: { 
-          ...caseToggles[caseType], 
-          [caseName]: caseToggles[caseType][caseName].map(() => !allSelected)
+        ...caseToggles[caseType], 
+        [caseName]: caseToggles[caseType][caseName].map((status, index) => 
+          index === caseIndex ? !status : status
+        )
       }
+    };
+  
+    setCaseToggles(newToggles);
   };
 
-  setCaseToggles(newToggles);
-};
+  const toggleAllCases = (caseType, caseName) => {
+    const allSelected = caseToggles[caseType][caseName].every(status => status);
+  
+    const newToggles = { 
+      ...caseToggles, 
+      [caseType]: { 
+        ...caseToggles[caseType], 
+        [caseName]: caseToggles[caseType][caseName].map(() => !allSelected)
+      }
+    };
+  
+    setCaseToggles(newToggles);
+  };
 
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
-        <ScrambleDisplay 
-          scramble={alteredScramble} 
-        />
+      <ScrambleDisplay 
+        scramble={scrambleError ? "Select at least one case." : alteredScramble} 
+      />
       </header>
       <LeftSidebar 
         scrambles={scrambles} 
