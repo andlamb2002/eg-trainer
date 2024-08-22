@@ -188,6 +188,24 @@ const App = () => {
     setCaseToggles(newToggles);
   };
 
+  const toggleAllCasesByType = (caseType) => {
+    const allSelected = Object.values(caseToggles[caseType]).every(cases =>
+      cases.every(status => status)
+    );
+
+    const newToggles = {
+      ...caseToggles,
+      [caseType]: Object.fromEntries(
+        Object.entries(caseToggles[caseType]).map(([caseName, statuses]) => [
+          caseName,
+          statuses.map(() => !allSelected)
+        ])
+      )
+    };
+
+    setCaseToggles(newToggles);
+  };
+
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
@@ -200,6 +218,7 @@ const App = () => {
         caseToggles={caseToggles} 
         toggleCase={toggleCase}
         toggleAllCases={toggleAllCases} // Pass toggleAllCases as a prop
+        toggleAllCasesByType={toggleAllCasesByType} // Pass toggleAllCasesByType as a prop
       />   
       <main className="flex justify-center items-center font-bold text-6xl">
         <Timer 
