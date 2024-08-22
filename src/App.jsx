@@ -105,32 +105,6 @@ const App = () => {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isActive, currentScramble]);
 
-  // const generateNewScramble = () => {
-  //   // Get all enabled CLL and EG1 cases
-  //   const enabledCLLCases = Object.keys(caseToggles.CLL).filter(key => caseToggles.CLL[key]);
-  //   const enabledEG1Cases = Object.keys(caseToggles.EG1).filter(key => caseToggles.EG1[key]);
-  
-  //   // Combine the two arrays
-  //   const combinedCases = [...enabledCLLCases.map(caseName => ({ type: 'CLL', name: caseName })),
-  //                          ...enabledEG1Cases.map(caseName => ({ type: 'EG1', name: caseName }))];
-  
-  //   // Randomly select a case based on the proportion of toggled cases
-  //   const randomCaseIndex = Math.floor(Math.random() * combinedCases.length);
-  //   const selectedCase = combinedCases[randomCaseIndex];
-  
-  //   // Choose a random caseId from the available caseIds in that case category
-  //   const caseSet = scrambles[selectedCase.type][selectedCase.name];
-  //   const randomCaseIdIndex = Math.floor(Math.random() * caseSet.length);
-  //   const selectedCaseId = caseSet[randomCaseIdIndex];
-  
-  //   // Retrieve the scramble from the algs list based on the selected caseId
-  //   const newScramble = selectedCaseId.algs[Math.floor(Math.random() * selectedCaseId.algs.length)];
-  
-  //   // Set the current case type and scramble
-  //   setCurrentCase(`${selectedCase.type}-${selectedCase.name}${selectedCaseId.caseId}`);
-  //   return newScramble;
-  // };
-
   const generateNewScramble = () => {
     // Filter cases based on toggles
     const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
@@ -181,38 +155,51 @@ const App = () => {
   useEffect(() => {
     setAlteredScramble(transformScramble(currentScramble));
   }, [currentScramble]);
-
-  // const toggleCase = (caseType, caseName) => {
-  //   const newToggles = { 
-  //     ...caseToggles, 
-  //     [caseType]: {
-  //       ...caseToggles[caseType],
-  //       [caseName]: !caseToggles[caseType][caseName]
-  //     }
-  //   };
-  //   const activeCases = Object.values(newToggles.CLL).filter(val => val).length + 
-  //                       Object.values(newToggles.EG1).filter(val => val).length;
-  //   if (activeCases > 0) {
-  //     setCaseToggles(newToggles);
-  //   }
-  // };
   
   const toggleCase = (caseType, caseName, caseIndex) => {
-    const newToggles = { ...caseToggles, [caseType]: { ...caseToggles[caseType], [caseName]: caseToggles[caseType][caseName].map((status, index) => index === caseIndex ? !status : status) }};
-    setCaseToggles(newToggles);
-  };
+    const totalSelectedCases = Object.values(caseToggles).flatMap(type => 
+        Object.values(type).flatMap(cases => cases)
+    ).filter(isSelected => isSelected).length;
+    
+    if (totalSelectedCases === 1 && caseToggles[caseType][caseName][caseIndex]) {
+        return;
+    }
 
-  const toggleAllCases = (caseType, caseName) => {
-    const allSelected = caseToggles[caseType][caseName].every(status => status);
     const newToggles = { 
+        ...caseToggles, 
+        [caseType]: { 
+            ...caseToggles[caseType], 
+            [caseName]: caseToggles[caseType][caseName].map((status, index) => 
+                index === caseIndex ? !status : status
+            ) 
+        }
+    };
+
+    setCaseToggles(newToggles);
+};
+
+const toggleAllCases = (caseType, caseName) => {
+  const totalSelectedCases = Object.values(caseToggles).flatMap(type => 
+      Object.values(type).flatMap(cases => cases)
+  ).filter(isSelected => isSelected).length;
+
+  const allSelected = caseToggles[caseType][caseName].every(status => status);
+
+  // Prevent toggling all off if only one case is selected across the entire app
+  if (totalSelectedCases === caseToggles[caseType][caseName].length && allSelected) {
+      return;
+  }
+
+  const newToggles = { 
       ...caseToggles, 
       [caseType]: { 
-        ...caseToggles[caseType], 
-        [caseName]: caseToggles[caseType][caseName].map(() => !allSelected)
+          ...caseToggles[caseType], 
+          [caseName]: caseToggles[caseType][caseName].map(() => !allSelected)
       }
-    };
-    setCaseToggles(newToggles);
   };
+
+  setCaseToggles(newToggles);
+};
 
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
