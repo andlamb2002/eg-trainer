@@ -1,15 +1,18 @@
 import React from 'react';
 import CollapsiblePanel from './CollapsiblePanel';
 
-const LeftSidebar = ({ scrambles }) => {
-  // Helper function to create panels for a given type (CLL or EG1)
+const LeftSidebar = ({ scrambles, caseToggles, toggleCase, toggleAllCases }) => {
   const createPanels = (caseType) => {
     return Object.keys(scrambles[caseType]).map(caseLabel => (
       <CollapsiblePanel
         key={`${caseType}-${caseLabel}`}
         label={caseLabel}
-        totalCases={scrambles[caseType][caseLabel].length}
-        cases={scrambles[caseType][caseLabel]} // Pass the cases directly
+        cases={scrambles[caseType][caseLabel].map((caseDetail, index) => ({
+          ...caseDetail,
+          isSelected: caseToggles[caseType][caseLabel][index]
+        }))}
+        onToggleCase={(caseLabel, caseIndex) => toggleCase(caseType, caseLabel, caseIndex)}
+        onToggleAllCases={(caseLabel) => toggleAllCases(caseType, caseLabel)} // Pass toggleAllCases as a prop
       />
     ));
   };
