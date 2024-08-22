@@ -85,7 +85,7 @@ export const scrambles = {
         caseId: 1,
         algs: [
           "F R U' R' U' R U R' F'",
-          "F R F U' R' U F' R' U'",
+          "F R F U' R' U F' R'",
           "R U R U' R' F R' F'",          
         ]
       },
