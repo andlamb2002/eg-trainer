@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CollapsiblePanel from './CollapsiblePanel';
 
 const LeftSidebar = ({ caseToggles, toggleCase }) => {
@@ -29,8 +29,15 @@ const LeftSidebar = ({ caseToggles, toggleCase }) => {
           {renderCaseButtons('EG1')}
         </div>
       </div>
-      <CollapsiblePanel label="U" totalCases={6} />
-      <CollapsiblePanel label="H" totalCases={4} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start">
+          <CollapsiblePanel label="A" totalCases={6} />
+          <CollapsiblePanel label="H" totalCases={4} />
+          <CollapsiblePanel label="L" totalCases={6} />
+          <CollapsiblePanel label="P" totalCases={6} />
+          <CollapsiblePanel label="S" totalCases={6} />
+          <CollapsiblePanel label="T" totalCases={6} />
+          <CollapsiblePanel label="U" totalCases={6} />
+      </div>
     </aside>
   );
 };
