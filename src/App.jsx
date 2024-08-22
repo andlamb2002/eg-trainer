@@ -165,6 +165,7 @@ const App = () => {
         />
       </header>
       <LeftSidebar 
+        scrambles={scrambles} 
         caseToggles={caseToggles} 
         toggleCase={toggleCase}
       />   
