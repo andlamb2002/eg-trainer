@@ -12,32 +12,33 @@ const App = () => {
   const [solveTimes, setSolveTimes] = useState(
     JSON.parse(localStorage.getItem('solveTimes')) || []
   );  
-  // const [caseToggles, setCaseToggles] = useState(
-  //   JSON.parse(localStorage.getItem('caseToggles')) || {
-  //     CLL: { U: true, T: true, L: true, P: true, H: true, S: true, A: true },
-  //     EG1: { U: true, T: true, L: true, P: true, H: true, S: true, A: true },
-  //   }
-  // );
-  const [caseToggles, setCaseToggles] = useState({
-    CLL: {
-      A: Array(6).fill(true),
-      H: Array(4).fill(true),
-      L: Array(6).fill(true),
-      P: Array(6).fill(true),
-      S: Array(6).fill(true),
-      T: Array(6).fill(true),
-      U: Array(6).fill(true)
-    },
-    EG1: {
-      A: Array(6).fill(true),
-      H: Array(4).fill(true),
-      L: Array(6).fill(true),
-      P: Array(6).fill(true),
-      S: Array(6).fill(true),
-      T: Array(6).fill(true),
-      U: Array(6).fill(true)
-    }
-  });
+  const initialCaseToggles = () => {
+    const storedToggles = JSON.parse(localStorage.getItem('caseToggles'));
+    if (storedToggles) return storedToggles;
+
+    return {
+      CLL: {
+        A: Array(6).fill(true),
+        H: Array(4).fill(true),
+        L: Array(6).fill(true),
+        P: Array(6).fill(true),
+        S: Array(6).fill(true),
+        T: Array(6).fill(true),
+        U: Array(6).fill(true)
+      },
+      EG1: {
+        A: Array(6).fill(true),
+        H: Array(4).fill(true),
+        L: Array(6).fill(true),
+        P: Array(6).fill(true),
+        S: Array(6).fill(true),
+        T: Array(6).fill(true),
+        U: Array(6).fill(true)
+      }
+    };
+  };
+
+  const [caseToggles, setCaseToggles] = useState(initialCaseToggles());
   const [selectedSolve, setSelectedSolve] = useState(null);
   const [scrambleError, setScrambleError] = useState(false);
 
