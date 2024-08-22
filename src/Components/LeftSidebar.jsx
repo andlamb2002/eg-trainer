@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CollapsiblePanel from './CollapsiblePanel';
 
 const LeftSidebar = ({ caseToggles, toggleCase }) => {
   const renderCaseButtons = (caseType) => {
@@ -12,7 +13,6 @@ const LeftSidebar = ({ caseToggles, toggleCase }) => {
       </button>
     ));
   };
-  
 
   return (
     <aside className="p-4">
@@ -29,6 +29,8 @@ const LeftSidebar = ({ caseToggles, toggleCase }) => {
           {renderCaseButtons('EG1')}
         </div>
       </div>
+      <CollapsiblePanel label="U" totalCases={6} />
+      <CollapsiblePanel label="H" totalCases={4} />
     </aside>
   );
 };
