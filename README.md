@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# EGTrainer App
+https://andlamb2002.github.io/eg-trainer/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My name is Andreas Lambropoulos and this is my personal project designed as a 2x2 training tool. Inspired by [ZBLL Trainer](https://bestsiteever.ru/zbll), this application's goal is to help speedcubers (including myself) with recognition and execution of EG cases and practice for one-looking.
 
-## Available Scripts
+## Tech Stack
+- **React Frontend**
+- **Tailwind CSS**
+- **LocalStorage**
 
-In the project directory, you can run:
+## Current Features
+- **Case Toggles**: Ability to toggle specific CLL/EG1 cases.
+- **Scramble Generation**: Randomly selected scramble based on toggled cases.
+- **Timer**: Spacebar to start/stop the timer.
+- **Time List**: Solves recorded in time list, as well as solve count and mean.
+- **Solve Info**: Provided scramble, case, and time of previous solves.
+- **Presets**: Name and save presets of specific cases.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Implemntations
+- **Add Face**: Apply 0-5 move face before EG case. Designed for one-look practice.
+- **Case Images**: Visuals to appear in case toggles and solve info.
+- **EG2 and Solved Face Cases**: Scrambles options for these cases.
+- **Settings**: Options for font size, color, timer, etc.
+- **Keyboard Shortctus**: For deleting solves, navigation, etc.
+- **Overall Design/Layout**: Redesign of entire app.
