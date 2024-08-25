@@ -42,13 +42,18 @@ const App = () => {
   const [selectedSolve, setSelectedSolve] = useState(null);
   const [scrambleError, setScrambleError] = useState(false);
 
-  const [presets, setPresets] = useState([]);
   const [presetName, setPresetName] = useState('');
+  const [presets, setPresets] = useState(() => {
+    // Load presets from local storage or initialize to an empty array if none exist
+    const localData = localStorage.getItem('presets');
+    return localData ? JSON.parse(localData) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
     localStorage.setItem('caseToggles', JSON.stringify(caseToggles));
-  }, [solveTimes, caseToggles]);
+    localStorage.setItem('presets', JSON.stringify(presets));  
+  }, [solveTimes, caseToggles, presets]);
 
   // Timer states
   const [timer, setTimer] = useState(0);
