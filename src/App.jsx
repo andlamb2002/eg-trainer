@@ -42,6 +42,9 @@ const App = () => {
   const [selectedSolve, setSelectedSolve] = useState(null);
   const [scrambleError, setScrambleError] = useState(false);
 
+  const [presets, setPresets] = useState([]);
+  const [presetName, setPresetName] = useState('');
+
   useEffect(() => {
     localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
     localStorage.setItem('caseToggles', JSON.stringify(caseToggles));
@@ -207,6 +210,27 @@ const App = () => {
     setCaseToggles(newToggles);
   };
 
+  const savePreset = () => {
+    if (!presetName.trim()) {
+      alert("Please enter a valid preset name.");
+      return;
+    }
+    if (presets.some(p => p.name === presetName)) {
+      alert("A preset with this name already exists.");
+      return;
+    }
+    const newPreset = {
+      name: presetName,
+      toggles: {...caseToggles}
+    };
+    setPresets([...presets, newPreset]);
+    setPresetName(''); // Clear input after saving
+  };
+
+  const loadPreset = (preset) => {
+    setCaseToggles(preset.toggles);
+  };
+
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
@@ -220,6 +244,11 @@ const App = () => {
         toggleCase={toggleCase}
         toggleAllCases={toggleAllCases} // Pass toggleAllCases as a prop
         toggleAllCasesByType={toggleAllCasesByType} // Pass toggleAllCasesByType as a prop
+        presets={presets}
+        presetName={presetName}
+        setPresetName={setPresetName}
+        savePreset={savePreset}
+        loadPreset={loadPreset}  // Pass the function as a prop
       />   
       <main className="flex justify-center items-center font-bold text-6xl">
         <Timer 

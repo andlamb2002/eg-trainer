@@ -1,7 +1,7 @@
 import React from 'react';
 import CollapsiblePanel from './CollapsiblePanel';
 
-const LeftSidebar = ({ scrambles, caseToggles, toggleCase, toggleAllCases, toggleAllCasesByType }) => {
+const LeftSidebar = ({ scrambles, caseToggles, toggleCase, toggleAllCases, toggleAllCasesByType, presets, presetName, setPresetName, savePreset, loadPreset }) => {
 
   // Determine if all cases are selected or not for a given case type (CLL or EG1)
   const isAllSelected = (caseType) => {
@@ -66,6 +66,23 @@ const LeftSidebar = ({ scrambles, caseToggles, toggleCase, toggleAllCases, toggl
       <h1 className="mb-4 text-2xl">Toggle Cases</h1>
       {renderCaseSection('CLL')}
       {renderCaseSection('EG1')}
+      <input
+        type="text"
+        value={presetName}
+        onChange={(e) => setPresetName(e.target.value)}
+        placeholder="Enter preset name"
+      />
+      <button onClick={savePreset}>Save Preset</button>
+      <div>
+        {presets.map((preset, index) => (
+          <div key={index}>
+            <span onClick={() => loadPreset(preset)} style={{ cursor: 'pointer' }}>
+              {preset.name}
+            </span>
+            {/* Buttons for editing and deleting will go here */}
+          </div>
+        ))}
+      </div>
     </aside>
   );
 };
