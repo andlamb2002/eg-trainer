@@ -3,16 +3,14 @@ import CollapsiblePanel from './CollapsiblePanel';
 
 const LeftSidebar = ({
   scrambles, caseToggles, toggleCase, toggleAllCases, toggleAllCasesByType,
-  presets, presetName, setPresetName, savePreset, loadPreset, editPreset, deletePreset
+  presets, presetName, setPresetName, savePreset, loadPreset, deletePreset
 }) => {
-  // Determine if all cases are selected or not for a given case type (CLL or EG1)
   const isAllSelected = (caseType) => {
     return Object.values(caseToggles[caseType]).every(cases =>
       cases.every(status => status)
     );
   };
 
-  // Button label and color based on the current state (All selected or not)
   const getButtonState = (caseType) => {
     const allSelected = isAllSelected(caseType);
     return {
@@ -21,10 +19,8 @@ const LeftSidebar = ({
     };
   };
 
-  // Render the All/None button
   const renderToggleButton = (caseType) => {
     const { label, color } = getButtonState(caseType);
-
     return (
       <button
         className={`ml-2 px-2 py-1 rounded text-white ${color}`}
@@ -35,7 +31,6 @@ const LeftSidebar = ({
     );
   };
 
-  // Render the section for a given case type (CLL or EG1)
   const renderCaseSection = (caseType) => (
     <div>
       <div className="flex items-center">
@@ -54,8 +49,8 @@ const LeftSidebar = ({
         key={`${caseType}-${caseLabel}`}
         label={caseLabel}
         cases={scrambles[caseType][caseLabel].map((caseDetail, index) => ({
-          ...caseDetail,
-          isSelected: caseToggles[caseType][caseLabel][index]
+          isSelected: caseToggles[caseType][caseLabel][index],
+          ...caseDetail
         }))}
         onToggleCase={(caseLabel, caseIndex) => toggleCase(caseType, caseLabel, caseIndex)}
         onToggleAllCases={(caseLabel) => toggleAllCases(caseType, caseLabel)}
@@ -63,39 +58,48 @@ const LeftSidebar = ({
     ));
   };
 
+  const handleLoadPreset = (preset) => {
+    loadPreset(preset);
+  };
+
+  const countSelectedCases = (toggles) => {
+    return Object.values(toggles).flatMap(caseType => 
+      Object.values(caseType).flatMap(caseArray => 
+        caseArray.filter(status => status) 
+      )
+    ).length;
+  };
+
   return (
     <aside className="p-4">
-      <h1 className="mb-4 text-2xl">Toggle Cases</h1>
-      {renderCaseSection('CLL')}
-      {renderCaseSection('EG1')}
-      <input
-        type="text"
-        value={presetName}
-        onChange={(e) => setPresetName(e.target.value)}
-        placeholder="New Preset"
-        className="m-2 p-2 border-2 border-gray-300 rounded"
-      />
-      <button
-        onClick={savePreset}
-        className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
-        Save
-      </button>
-      <div className="mt-4">
+      <div className="flex-grow">
+        <h1 className="mb-4 text-2xl">Toggle Cases</h1>
+        {renderCaseSection('CLL')}
+        {renderCaseSection('EG1')}
+        <hr className="my-4" />
+        <input
+          type="text"
+          value={presetName}
+          onChange={(e) => setPresetName(e.target.value)}
+          placeholder="New Preset"
+          className="mx-2 p-1 border-2 border-gray-300 rounded"
+        />
+        <button
+          onClick={savePreset}
+          className="bg-green-500 hover:bg-green-600 text-white py-1 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
+        >
+          Save
+        </button>
+      </div>
+      <div className="m-2 overflow-auto max-h-[200px]">
         {presets.map((preset, index) => (
           <div key={index} className="flex items-center my-2">
             <span
-              onClick={() => loadPreset(preset)}
-              className="cursor-pointer hover:text-blue-900 mx-2"
+              onClick={() => handleLoadPreset(preset)}
+              className="cursor-pointer hover:underline flex-grow"
             >
-              {preset.name}
+              {preset.name} ({countSelectedCases(preset.toggles)})
             </span>
-            <button
-              onClick={() => editPreset(preset)}
-              className="bg-blue-500 hover:bg-blue-600 text-white  mr-2 py-1 px-2 rounded focus:outline-none"
-            >
-              Edit
-            </button>
             <button
               onClick={() => deletePreset(preset.name)}
               className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded focus:outline-none"

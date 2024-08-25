@@ -215,20 +215,25 @@ const App = () => {
       alert("Please enter a valid preset name.");
       return;
     }
-    if (presets.some(p => p.name === presetName)) {
-      alert("A preset with this name already exists.");
-      return;
-    }
+    const presetIndex = presets.findIndex(p => p.name === presetName);
     const newPreset = {
       name: presetName,
-      toggles: {...caseToggles}
+      toggles: { ...caseToggles }
     };
-    setPresets([...presets, newPreset]);
+  
+    if (presetIndex > -1) {
+      const newPresets = [...presets];
+      newPresets[presetIndex] = newPreset; // Replace existing preset
+      setPresets(newPresets);
+    } else {
+      setPresets([...presets, newPreset]); // Add new preset
+    }
     setPresetName(''); // Clear input after saving
   };
 
   const loadPreset = (preset) => {
     setCaseToggles(preset.toggles);
+    setPresetName(preset.name);
   };
 
   const editPreset = (preset) => {
