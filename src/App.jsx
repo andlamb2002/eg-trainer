@@ -231,6 +231,18 @@ const App = () => {
     setCaseToggles(preset.toggles);
   };
 
+  const editPreset = (preset) => {
+    setPresetName(preset.name);
+    setCaseToggles(preset.toggles);
+    // Optionally, keep track of editing state if needed
+  };
+
+  const deletePreset = (presetName) => {
+    if (window.confirm(`Are you sure you want to delete the preset '${presetName}'?`)) {
+      setPresets(presets.filter(p => p.name !== presetName));
+    }
+  };  
+
   return (
     <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
@@ -249,6 +261,8 @@ const App = () => {
         setPresetName={setPresetName}
         savePreset={savePreset}
         loadPreset={loadPreset}  // Pass the function as a prop
+        editPreset={editPreset}  // Pass the function as a prop
+        deletePreset={deletePreset}  // Pass the function
       />   
       <main className="flex justify-center items-center font-bold text-6xl">
         <Timer 
