@@ -101,11 +101,15 @@ const App = () => {
     return () => clearInterval(interval);
   }, [isActive, startTime]);
 
-  // Handle keypress
   useEffect(() => {
     const handleKeyPress = (event) => {
+      if (document.activeElement.tagName === 'INPUT') {
+        // If the active element is an input, ignore the space key for starting/stopping the timer
+        return;
+      }
+  
       if (event.code === 'Space') {
-        event.preventDefault();  
+        event.preventDefault();
         if (!isActive && !scrambleError) {
           startTimer();
         } else if (isActive) {
@@ -116,7 +120,7 @@ const App = () => {
   
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isActive, currentScramble, scrambleError]);
+  }, [isActive, scrambleError]);
 
   const generateNewScramble = () => {
     const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
