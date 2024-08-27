@@ -13,12 +13,11 @@ My name is Andreas Lambropoulos and this is my personal project designed as a 2x
 - **Scramble Generation**: Randomly selected scramble based on toggled cases.
 - **Timer**: Spacebar to start/stop the timer.
 - **Time List**: Solves recorded in time list, as well as solve count and mean.
-- **Solve Info**: Provided scramble, case, and time of previous solves.
+- **Solve Info**: Provided scramble, case, image, and time of previous solves.
 - **Presets**: Name and save presets of specific cases.
 
 ## Future Implemntations
 - **Add Face**: Apply 0-5 move face before EG case. Designed for one-look practice.
-- **Case Images**: Visuals to appear in case toggles and solve info.
 - **EG2 and Solved Face Cases**: Scrambles options for these cases.
 - **Settings**: Options for font size, color, timer, etc.
 - **Keyboard Shortctus**: For deleting solves, navigation, etc.
