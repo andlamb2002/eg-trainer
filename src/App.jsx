@@ -292,6 +292,7 @@ const App = () => {
         selectedSolve={selectedSolve} 
         deleteSolve={deleteSolve}
         clearSolves={clearSolves}
+        scrambles={scrambles} 
       />
     </div>
   );

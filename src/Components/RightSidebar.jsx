@@ -1,7 +1,6 @@
 import React from 'react';
 
-const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves}) => {
-
+const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves, scrambles }) => {
   const meanTime = solveTimes.length > 0 
     ? (
         solveTimes
@@ -10,6 +9,17 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
       ).toFixed(2)
     : 0;
 
+    const getCaseImageUrl = () => {
+      if (!selectedSolve || !scrambles) return '';
+      const details = selectedSolve.caseType.split(' ');
+      const caseType = details[0]; // "CLL"
+      const caseLabel = details[1]; // "U"
+      const caseId = parseInt(details[3]); // converting "1" from "Case 1"
+  
+      const caseInfo = scrambles[caseType][caseLabel].find(c => c.caseId === caseId);
+      return caseInfo?.url || '';
+  };
+
   return (
     <aside className="p-4">
       {selectedSolve ? (
@@ -17,6 +27,7 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
           <p>Scramble: {selectedSolve.scramble}</p>
           <p>Time: {selectedSolve.time} seconds</p>
           <p>Case Type: {selectedSolve.caseType}</p>
+          <img src={getCaseImageUrl()} alt={`Case ${selectedSolve.caseType}`} className="my-2"/>
           <button
             onClick={() => deleteSolve(selectedSolve)}
             className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700"
