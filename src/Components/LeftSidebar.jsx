@@ -73,7 +73,6 @@ const LeftSidebar = ({
   return (
     <aside className="p-4">
       <div className="flex-grow">
-        <h1 className="mb-4 text-2xl">Toggle Cases</h1>
         {renderCaseSection('CLL')}
         {renderCaseSection('EG1')}
         <hr className="my-4" />

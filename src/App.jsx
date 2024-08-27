@@ -258,11 +258,11 @@ const App = () => {
   };  
 
   return (
-    <div className="grid grid-rows-[10%_90%] grid-cols-3 min-h-screen overflow-hidden">
-      <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4">
-      <ScrambleDisplay 
-        scramble={scrambleError ? "Select at least one case." : alteredScramble} 
-      />
+    <div className="grid grid-cols-3">
+      <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4 h-24">
+        <ScrambleDisplay 
+          scramble={scrambleError ? "Select at least one case." : alteredScramble}
+        />
       </header>
       <LeftSidebar 
         scrambles={scrambles} 
