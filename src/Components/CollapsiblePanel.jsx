@@ -27,7 +27,7 @@ const CollapsiblePanel = ({ label, cases, onToggleCase, onToggleAllCases }) => {
                     <span className="font-bold text-white">{label} ({selectedCount}/{totalCases})</span>
                 </div>
                 <div className="cursor-pointer bg-gray-300 p-2" onClick={togglePanel}>
-                    {isOpen ? '▼' : '▲'}
+                    {isOpen ? '▲' : '▼' }
                 </div>
             </div>
             {isOpen && (
