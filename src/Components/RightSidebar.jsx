@@ -39,7 +39,7 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
         <div>No solve selected</div>
       )}
       <hr className="my-4" />
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col">
         <h2>Solves: {solveTimes.length}</h2>
         <h2>Mean: {meanTime} seconds</h2>
         <div className="overflow-y-auto h-1/2 w-full">
