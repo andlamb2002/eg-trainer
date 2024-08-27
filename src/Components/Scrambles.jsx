@@ -61,6 +61,7 @@ export const generateCubeUrl = (alg, size = 150) => {
     fmt: 'svg',  // Using SVG for better quality and scalability
     size,        // Adjust size as needed
     pzl: '2',    // Puzzle type for 2x2
+    view: 'plan', // Optional, for a flat view
     alg,         // Algorithm that represents the case visually
   });
   return `${baseUrl}?${params.toString()}`;
