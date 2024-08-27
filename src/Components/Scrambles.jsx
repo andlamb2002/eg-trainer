@@ -1,8 +1,81 @@
+const imageScrambles = {
+  A: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+  H: [
+    "",
+    "",
+    "",
+    "",
+  ],
+  L: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+  P: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+  S: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+  T: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+  U: [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ],
+};
+
+export const generateCubeUrl = (alg, size = 150) => {
+  const baseUrl = "https://visualcube.api.cubing.net/visualcube.php";
+  const params = new URLSearchParams({
+    fmt: 'svg',  // Using SVG for better quality and scalability
+    size,        // Adjust size as needed
+    pzl: '2',    // Puzzle type for 2x2
+    alg,         // Algorithm that represents the case visually
+  });
+  return `${baseUrl}?${params.toString()}`;
+};
+
+const getUrlForCase = (group, caseId) => {
+  return generateCubeUrl(imageScrambles[group][caseId - 1]); // Adjust index since caseId starts from 1
+};
+
 export const scrambles = {
   CLL: {
     A: [
       {
         caseId: 1,
+        url: getUrlForCase('A', 1),
         algs: [
           "R' F' R U' R' F2 R",
           "R' U' F' U F R F U R U' R' F'",
@@ -11,6 +84,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('A', 2),
         algs: [
           "R' F R F' R U R' F R' F' R U R U' R'",
           "R U' R' U F' U' R' F R U' F",
@@ -19,6 +93,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('A', 3),
         algs: [
           "R' F R F' R U2 R' U' R' F R F'",
           "F' R U R' U2 R' F2 R",
@@ -26,6 +101,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('A', 4),
         algs: [
           "F R' F' R U R U' R' F' R U R' U' R' F R",
           "F R' F' U2 R' U2 R F2 U2 F U2 F2",
@@ -33,6 +109,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('A', 5),
         algs: [
           "R U R2 F' R F R U' R2 F R",
           "R' F U2 F' R F R' U2 R F'",
@@ -40,6 +117,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('A', 6),
         algs: [
           "F R2 F' U' R' U' R F R' F'",
           "R U R' U' R' F R2 U R' U' F'",
@@ -50,6 +128,7 @@ export const scrambles = {
     H: [
       {
         caseId: 1,
+        url: getUrlForCase('H', 1),
         algs: [
           "R' F2 R U R' F' R U R' F R",
           "R' U2 R U2 F R F' R' F R F' R U R'",
@@ -58,6 +137,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('H', 2),
         algs: [
           "R U' R' F R' F' R2 U' R' F R' F' R",
           "R' F R F' R U R2 F R F' R U R'",
@@ -66,6 +146,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('H', 3),
         algs: [
           "R' F' R U' R' F' R F' R U R'",
           "R U' R' F U2 R2 F R U' R",
@@ -73,6 +154,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('H', 4),
         algs: [
           "F R U' R' U R U2 R' U' R U R' U' F'",
           "F R U R' U' R F' R U R' U' R'",
@@ -83,6 +165,7 @@ export const scrambles = {
     L: [
       {
         caseId: 1,
+        url: getUrlForCase('L', 1),
         algs: [
           "F R U' R' U' R U R' F'",
           "F R F U' R' U F' R'",
@@ -91,6 +174,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('L', 2),
         algs: [
           "F' U R U' R' F2 R U' R'", 
           "R U R' U R U' R' U' R' F R F'",
@@ -99,6 +183,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('L', 3),
         algs: [
           "R' U' R U R' F' R U R' U' R' F R2",
           "R' F2 R F' R' F2 R2 U' R'",
@@ -106,6 +191,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('L', 4),
         algs: [
           "F U' R U' R' U R' F R F2",
           "R' F' R U' R' F R U' R' F R U' R' F2 R",
@@ -113,6 +199,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('L', 5),
         algs: [
           "R U' R' U R U' R' F R' F' R2 U R'",
           "R' U2 R' U' F R2 F' U R2",
@@ -120,6 +207,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('L', 6),
         algs: [
           "R U R2 F' R U R U' R2 F' R F",
           "R U' R' F U2 F U' R U' R' F'",
@@ -130,6 +218,7 @@ export const scrambles = {
     P: [
       {
         caseId: 1,
+        url: getUrlForCase('P', 1),
         algs: [
           "R' F' U' F U F' U' F U R",
           "F R' F' U2 R' U2 R2 U' R' F R' F' R",
@@ -138,6 +227,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('P', 2),
         algs: [
           "R2 U R' U' F R F' R U' R2",
           "F R U R' U' F' R2 U2 R' U2 R2",
@@ -146,6 +236,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('P', 3),
         algs: [
           "R U' R' F R' F R U R' F R",
           "R' U' R U' R' U2 F' R U R U' R' F",
@@ -153,6 +244,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('P', 4),
         algs: [
           "R U' R U' R' U R' F R2 F'",
           "F R' F' R U2 F R' F' R2 U2 R'",
@@ -160,6 +252,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('P', 5),
         algs: [
           "F' R U R' U2 R' F R U' R' F2 R",
           "R2 U' R' U' F R2 U2 F' R2 F",
@@ -167,6 +260,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('P', 6),
         algs: [
           "R' F2 R F' U2 R U' R' U' F",
           "F U R U' R' U R U' R2 F' R U R U' R'",
@@ -177,6 +271,7 @@ export const scrambles = {
     S: [
       {
         caseId: 1,
+        url: getUrlForCase('S', 1),
         algs: [
           "R' F2 R U R' F R",
           "F R U R' U' F' R' F' U' F U R",
@@ -185,6 +280,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('S', 2),
         algs: [
           "R' U R U' R' F R' F' R2 U R' U' R",
           "R' F R U' F U R U' R' U F'",
@@ -193,6 +289,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('S', 3),
         algs: [
           "R U' R' F R' F2 R U R U' R' F",
           "F R' F' R U R U' R' F' U2 F U F' U F",
@@ -200,6 +297,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('S', 4),
         algs: [
           "F U' F' R U' R' F",
           "R U R' U' R' F R F' R' F' R U R U' R' F",
@@ -207,6 +305,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('S', 5),
         algs: [
           "R U2 R' F R U2 R' U R U' R' F",
           "R2 F' U' R2 F R2 U F R2",
@@ -214,6 +313,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('S', 6),
         algs: [
           "F U R U2 R' U' R U R' F'",
           "R' F2 R U2 R U' R' F",
@@ -224,6 +324,7 @@ export const scrambles = {
     T: [
       {
         caseId: 1,
+        url: getUrlForCase('T', 1),
         algs: [
           "R' U' R U F R F'",
           "F U2 F' U' F U' R' F' R U R U' R'",
@@ -232,6 +333,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('T', 2),
         algs: [
           "F R U' R' U R U R' F'",
           "R' F' R U R U' R' F",
@@ -240,6 +342,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('T', 3),
         algs: [
           "R U2 R2 F R F' R U' R' U R U2 R'",
           "R U F R' F' R U2 R U2 R2",
@@ -247,6 +350,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('T', 4),
         algs: [
           "R' U2 F2 R U R' F U' R",
           "R U R' U R U2 R2 F' R U' R' F2 R",
@@ -254,6 +358,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('T', 5),
         algs: [
           "R U R' U' R U' R' F' U' F R U R'",
           "R U R' U2 R U R' U R' F R F'",
@@ -261,6 +366,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('T', 6),
         algs: [
           "R' F R U2 R2 F R U' R",
           "R U' R U2 R' F R U2 R2 F",
@@ -271,6 +377,7 @@ export const scrambles = {
     U: [
       {
         caseId: 1,
+        url: getUrlForCase('U', 1),
         algs: [
           "R' U' F R' F' R U R",
           "F R U' R' U2 R U R' F'",
@@ -279,6 +386,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('U', 2),
         algs: [
           "R2 F2 R U R' F U' R U R2",
           "R' F U' R U' R' U2 F2 R",
@@ -287,6 +395,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('U', 3),
         algs: [
           "R U2 R U' R' F R' F2 U' F",
           "R' U' F2 U' R U R' U F2 R",
@@ -294,6 +403,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('U', 4),
         algs: [
           "R2 F R F' R' F2 R U R' F R2",
           "R U' R' F' U F R U R' U R U' R'",
@@ -301,6 +411,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('U', 5),
         algs: [
           "R U2 R' U R' F2 R F' R' F2 R",
           "R2 U R2 F' R U R U' R' F R U' R2",
@@ -308,6 +419,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('U', 6),
         algs: [
           "R F' U' R' U' R2 U R' U' R' F R",
           "R' F R2 U' R' F R' F' R U R' F' R",
@@ -320,6 +432,7 @@ export const scrambles = {
     A: [
       {
         caseId: 1,
+        url: getUrlForCase('A', 1),
         algs: [
           "R' F' R U' F' R' F R2 U R'",
           "R' F R2 U R' F' U' R U' R'",
@@ -328,6 +441,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('A', 2),
         algs: [
           "R U' F2 R U2 R U' F",
           "F R U' R' U R' F' R U F' R U R'",
@@ -336,6 +450,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('A', 3),
         algs: [
           "R U' R' U2 R' F R2 U2 R' F",
           "F' R U R' U' R U R2 F' R",
@@ -343,6 +458,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('A', 4),
         algs: [
           "R' F R F' U R U' R2 F' R F",
           "R U R' U2 R' F' R F R' F R",
@@ -350,6 +466,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('A', 5),
         algs: [
           "R' F R U' R' F R U R U R' F'",
           "R' F2 R U' R U R' F' R U' R'",
@@ -357,6 +474,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('A', 6),
         algs: [
           "R U R2 F' R2 U2 R' U' R' F R F'",
           "R U' R2 F R U' R' F R F'",
@@ -367,6 +485,7 @@ export const scrambles = {
     H: [
       {
         caseId: 1,
+        url: getUrlForCase('H', 1),
         algs: [
           "R U' R2 F R F' R' F' R F",
           "F' R' F R F R' F' R2 U R'",
@@ -375,6 +494,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('H', 2),
         algs: [
           "F2 U' F U' F' U F' U' F U' F2",
           "F R U' R2 F U' F2 U R",
@@ -383,6 +503,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('H', 3),
         algs: [
           "R' U' R' F2 U F' R F'",
           "F U2 R U' R' F2 R' F2 R F'",
@@ -390,6 +511,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('H', 4),
         algs: [
           "F' U R' F R F' U F2",
           "R' F R F' R' F R U' R' F R F'",
@@ -400,6 +522,7 @@ export const scrambles = {
     L: [
       {
         caseId: 1,
+        url: getUrlForCase('L', 1),
         algs: [
           "R U' R' U R U' R2 F' R F",
           "R U R' F' R U2 R' U2 R U R'",
@@ -408,6 +531,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('L', 2),
         algs: [
           "R' F R U' R' F R2 U R' F'",
           "R' F R F' R' F R U R U2 R'",
@@ -416,6 +540,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('L', 3),
         algs: [
           "R' U R2 U' R2 U' F R2 U' R'",
           "R U R2 F' R2 U' R2 U' R2 U' R2 U2 R",
@@ -423,6 +548,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('L', 4),
         algs: [
           "R U2 R' F R U' R2 F' R",
           "R' F R2 U R' F' R U2 R'",
@@ -430,6 +556,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('L', 5),
         algs: [
           "R U R' F' R U R' U' F R' F' R",
           "F' R' F R U' R U R' U' R U R'",
@@ -437,6 +564,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('L', 6),
         algs: [
           "F R U' R' U R' F' R U R' F' R",
           "R' U2 F R U2 R U' R2 F",
@@ -447,6 +575,7 @@ export const scrambles = {
     P: [
       {
         caseId: 1,
+        url: getUrlForCase('P', 1),
         algs: [
           "F U' R' F R U' F2 R U R'",
           "F2 R U R' U2 R U R' U' F",
@@ -455,6 +584,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('P', 2),
         algs: [
           "R' F R2 U' R2 F R",
           "F U F' U' F U2 F U' F2",
@@ -463,6 +593,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('P', 3),
         algs: [
           "F' R U2 R' F' U2 F R' F' R",
           "F R' F U' F2 R U R",
@@ -470,6 +601,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('P', 4),
         algs: [
           "F' R U R' U' R U R' F' R U R'",
           "R U' R' U R U' R' F R U' R'",
@@ -477,6 +609,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('P', 5),
         algs: [
           "R U' R2 F R U R U' R' U' R' F R F'",
           "F U' R U2 R' F' R U R' F'",
@@ -484,6 +617,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('P', 6),
         algs: [
           "R' F R F' R' F R2 U R' U' R U' R'",
           "F R U' R' F R U2 R' U F'",
@@ -494,6 +628,7 @@ export const scrambles = {
     S: [
       {
         caseId: 1,
+        url: getUrlForCase('S', 1),
         algs: [
           "R U' R2 F' R F U R' F R",
           "R U R' U F R U' R2 F' R",
@@ -502,6 +637,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('S', 2),
         algs: [
           "R' F R F U F2 R' F R",
           "F R' F' R F R U' R' U R' F' R",
@@ -510,6 +646,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('S', 3),
         algs: [
           "R' F R U2 R U' R2 F2 R F'",
           "F R' F' R U R' F' R2 U R'",
@@ -517,6 +654,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('S', 4),
         algs: [
           "F' U R U' R' U F R U R'",
           "F' R' F R2 U R' U' F R' F' R",
@@ -524,6 +662,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('S', 5),
         algs: [
           "R2 F U' R U' R U' F2",
           "R U' R' U R U' R' U F R U' R'",
@@ -531,6 +670,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('S', 6),
         algs: [
           "R' F R2 U' R2 F U R F' U F R'",
           "R' F R2 U' R' U R U' R' F",
@@ -541,6 +681,7 @@ export const scrambles = {
     T: [
       {
         caseId: 1,
+        url: getUrlForCase('T', 1),
         algs: [
           "R2 U R U' R2 F R U2 R' F",
           "R U2 R' U' R' F' R F R' F' R",
@@ -549,6 +690,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('T', 2),
         algs: [
           "R U2 R' F R U' R' F' R U R'",
           "R U' R' F R U' R' F R U R' F'",
@@ -557,6 +699,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('T', 3),
         algs: [
           "R U2 R' U' R' F' R2 U R'",
           "R' F R2 U' R' U' R' F2 R",
@@ -564,6 +707,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('T', 4),
         algs: [
           "R' F R F' U R U' R' U F R U' R'",
           "R' U F R2 U' R2 U' F U' R",
@@ -571,6 +715,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('T', 5),
         algs: [
           "R' F' R2 U R' F' R U R'",
           "R U R2 F' R F R' F' R",
@@ -578,6 +723,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('T', 6),
         algs: [
           "R' U' R U F2 U' F2 R U R",
           "R U R' F R U R' F U' R U' R'",
@@ -588,6 +734,7 @@ export const scrambles = {
     U: [
       {
         caseId: 1,
+        url: getUrlForCase('U', 1),
         algs: [
           "R U R' U R U R2 F R2 U' R'",
           "F2 U' F' U' F U' F' U F'",
@@ -596,6 +743,7 @@ export const scrambles = {
       },
       {
         caseId: 2,
+        url: getUrlForCase('U', 2),
         algs: [
           "R U R' F' U' R U R' U' F R' F' R",
           "F' R2 F' R2 F' U' F2 R2",
@@ -604,6 +752,7 @@ export const scrambles = {
       },
       {
         caseId: 3,
+        url: getUrlForCase('U', 3),
         algs: [
           "F' U2 R U2 R' U2 F",
           "R U R' U F' R U R' U' R U R2 F2 R",
@@ -611,6 +760,7 @@ export const scrambles = {
         ]
       },{
         caseId: 4,
+        url: getUrlForCase('U', 4),
         algs: [
           "R U' R' F R U' R2 F R",
           "R' F R F' R' F R2 U' R'",
@@ -618,6 +768,7 @@ export const scrambles = {
         ]
       },{
         caseId: 5,
+        url: getUrlForCase('U', 5),
         algs: [
           "R' F R F' U R U' R' F R U' R'",
           "F U' R' F2 R F' U2 F'",
@@ -625,6 +776,7 @@ export const scrambles = {
         ]
       },{
         caseId: 6,
+        url: getUrlForCase('U', 6),
         algs: [
           "R' F R U' R' F R U' R U R' F'",
           "R' F R2 U' R' U F U F'",
