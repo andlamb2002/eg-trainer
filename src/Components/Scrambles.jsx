@@ -62,6 +62,7 @@ export const generateCubeUrl = (alg, size = 150) => {
     size,        // Adjust size as needed
     pzl: '2',    // Puzzle type for 2x2
     view: 'plan', // Optional, for a flat view
+    bg: 't',      // Setting background to transparent
     alg,         // Algorithm that represents the case visually
   });
   return `${baseUrl}?${params.toString()}`;
