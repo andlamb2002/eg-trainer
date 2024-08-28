@@ -18,7 +18,6 @@ My name is Andreas Lambropoulos and this is my personal project designed as a 2x
 
 ## Future Implemntations
 - **Add Face**: Apply 0-5 move face before EG case. Designed for one-look practice.
-- **EG2 and Solved Face Cases**: Scrambles options for these cases.
-- **Settings**: Options for font size, color, timer, etc.
-- **Keyboard Shortctus**: For deleting solves, navigation, etc.
+- **EG2 Cases**: Scrambles options for EG2.
+- **Settings**: Customizations for font size, color, timer, keyboard shortcuts, etc.
 - **Overall Design/Layout**: Redesign of entire app.
