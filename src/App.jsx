@@ -281,7 +281,7 @@ const App = () => {
         editPreset={editPreset}  // Pass the function as a prop
         deletePreset={deletePreset}  // Pass the function
       />   
-      <main className="flex justify-center items-center font-bold text-6xl">
+      <main className="flex justify-center font-bold text-6xl">
         <Timer 
           timer={timer} 
           isActive={isActive} 
