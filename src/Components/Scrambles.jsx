@@ -7,6 +7,11 @@ const imageScrambles = {
     "R' F U2 R U R' U2 R' F' R2 U2",
     "U2 F R' F' R U2 R U2 R'",
   ],
+  F: [
+    "R U R' U' R' F R2 U' R' U' R U R' F'",
+    "F R U' R' U' R U R' F' R U R' U' R' F R F'",
+    "",
+  ],
   H: [
     "R2 U2 R' U2 R2",
     "F U R U' R' U R U' R' U R U' R' F'",
@@ -124,6 +129,26 @@ export const scrambles = {
           "F R2 F' U' R' U' R F R' F'",
           "R U R' U' R' F R2 U R' U' F'",
           "R U R U' R' F R' F' R' U R F' U F R'",          
+        ]
+      },
+    ],
+    F: [
+      {
+        caseId: 1,
+        url: getUrlForCase('F', 1),
+        algs: [
+          "R' F R' F2 R U' R' F2 R2", 
+          "R2 F2 R U R' F2 R F' R", 
+          "R' U R' F2 R F' R' F2 R2",  
+        ]
+      },
+      {
+        caseId: 2,
+        url: getUrlForCase('F', 2),
+        algs: [
+          "R' U R' F2 R F' U R' F2 R F' R", 
+          "R U' R' U' F2 U' R U R' U F2", 
+          "R' F R' F2 R U' F R' F2 R U' R",  
         ]
       },
     ],
@@ -481,6 +506,35 @@ export const scrambles = {
           "R U R2 F' R2 U2 R' U' R' F R F'",
           "R U' R2 F R U' R' F R F'",
           "R U R2 F' R2 U2 R' U' R' F R F'",          
+        ]
+      },
+    ],
+    F: [
+      {
+        caseId: 1,
+        url: getUrlForCase('F', 1),
+        algs: [
+          "R2 U' R2 U2 F2 U' R2", 
+          "R2 U F2 U2 R2 U R2", 
+          "R2 U' R2 U2 F2 U' R2",  
+        ]
+      },
+      {
+        caseId: 2,
+        url: getUrlForCase('F', 2),
+        algs: [
+          "R U' R' U' R' F2 U' R U R", 
+          "R' F U' R2 U F' R", 
+          "R' U' R' U F2 R U R U R'",  
+        ]
+      },
+      {
+        caseId: 3,
+        url: getUrlForCase('F', 3),
+        algs: [
+          "F U' F U F R' F2 U F U F' U' F R F2", 
+          "F2 R' F' U F U' F' U' F2 R F' U' F' U F'", 
+          "R' F' U' F' U F R F' U2 F U2 F' U' F2",          
         ]
       },
     ],

@@ -19,6 +19,7 @@ const App = () => {
     return {
       CLL: {
         A: Array(6).fill(true),
+        F: Array(2).fill(true),
         H: Array(4).fill(true),
         L: Array(6).fill(true),
         P: Array(6).fill(true),
@@ -28,6 +29,7 @@ const App = () => {
       },
       EG1: {
         A: Array(6).fill(true),
+        F: Array(3).fill(true),
         H: Array(4).fill(true),
         L: Array(6).fill(true),
         P: Array(6).fill(true),
