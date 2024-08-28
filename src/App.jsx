@@ -261,7 +261,8 @@ const App = () => {
     <div className="grid grid-cols-3">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4 h-24">
         <ScrambleDisplay 
-          scramble={scrambleError ? "Select at least one case." : alteredScramble}
+          scramble={currentScramble} 
+          updateScramble={updateScramble}
         />
       </header>
       <LeftSidebar 
