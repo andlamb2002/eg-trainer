@@ -1,4 +1,5 @@
 import React from 'react';
+import RangeSlider from './RangeSlider';
 
 const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves, 
   scrambles, stagedMinMoves, stagedMaxMoves, handleMinMovesChange, handleMaxMovesChange, applyFaceMoves
@@ -25,7 +26,7 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
   return (
     <aside className="p-4">
       <div>
-        <label htmlFor="minMoves">Min Moves:</label>
+        {/* <label htmlFor="minMoves">Min Moves:</label>
         <input
           type="number"
           id="minMoves"
@@ -38,8 +39,21 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
           id="maxMoves"
           value={stagedMaxMoves}
           onChange={(e) => handleMaxMovesChange(e.target.value)}
+        /> */}
+        <RangeSlider
+          min={0}
+          max={5}
+          stagedMinMoves={stagedMinMoves}
+          stagedMaxMoves={stagedMaxMoves}
+          onMinChange={handleMinMovesChange}
+          onMaxChange={handleMaxMovesChange}
         />
-        <button onClick={applyFaceMoves}>Apply Face</button>
+        <button
+          onClick={applyFaceMoves}
+          className="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200 ease-in-out"
+        >
+          Apply Face
+        </button>
       </div>
       <hr className="my-4" />
       {selectedSolve ? (
