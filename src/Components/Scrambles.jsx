@@ -868,8 +868,8 @@ export const scrambles = {
   
     const inversed = invertScramble(scramble);
     const transformedScramble = addRandomU(inversed);
-    const faceMoves = generateFaceMoves(minMoves, maxMoves);
-    const finalScramble = `${transformedScramble} ${faceMoves}`.trim(); 
+    const faceMoves = generateFaceMoves(minMoves, maxMoves).join(' ');
+    const finalScramble = `${transformedScramble} [${faceMoves}]`.trim(); 
     return finalScramble;
   };
 
