@@ -843,7 +843,7 @@ export const scrambles = {
   },
 };
   
-  export const transformScramble = (scramble) => {
+  export const transformScramble = (scramble, minMoves, maxMoves) => {
     const invertScramble = (scramble) => {
       if (!scramble) return '';
       let moves = scramble.split(' ');
@@ -867,7 +867,35 @@ export const scrambles = {
     };
   
     const inversed = invertScramble(scramble);
-    const newScramble = addRandomU(inversed);
-    return newScramble;
+    const transformedScramble = addRandomU(inversed);
+    const faceMoves = generateFaceMoves(minMoves, maxMoves);
+    const finalScramble = `${transformedScramble} ${faceMoves}`.trim(); 
+    return finalScramble;
   };
-  
+
+const generateFaceMoves = (minMoves, maxMoves) => {
+  if (minMoves > maxMoves) return []; // Basic validation
+
+  const moves = ['R', 'U', 'F'];
+  const suffixes = ['', '\'', '2'];
+
+  let lastMove = '';
+  const sequence = [];
+  const moveCount = Math.floor(Math.random() * (maxMoves - minMoves + 1)) + minMoves;
+
+  for (let i = 0; i < moveCount; i++) {
+    let move = moves[Math.floor(Math.random() * moves.length)];
+    while (
+      (i === 0 && move === 'U') ||
+      move === lastMove 
+    ) {
+      move = moves[Math.floor(Math.random() * moves.length)];
+    }
+
+    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+    sequence.push(move + suffix);
+    lastMove = move;
+  }
+
+  return sequence;
+};

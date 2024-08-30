@@ -51,6 +51,11 @@ const App = () => {
     return localData ? JSON.parse(localData) : [];
   });
 
+  const [minMoves, setMinMoves] = useState(0);
+  const [maxMoves, setMaxMoves] = useState(0);
+  const [stagedMinMoves, setStagedMinMoves] = useState(0);
+  const [stagedMaxMoves, setStagedMaxMoves] = useState(0);
+
   useEffect(() => {
     localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
     localStorage.setItem('caseToggles', JSON.stringify(caseToggles));
@@ -142,13 +147,21 @@ const App = () => {
     const caseDetails = scrambles[selectedCase.type][selectedCase.caseName][selectedCase.caseId];
     const newScramble = caseDetails.algs[Math.floor(Math.random() * caseDetails.algs.length)];
     
+    
     setCurrentCase(`${selectedCase.type} ${selectedCase.caseName} Case ${selectedCase.caseId + 1}`);
     return newScramble;
   };
 
+  // const updateScramble = () => {
+  //   const newScramble = generateNewScramble();
+  //   setCurrentScramble(newScramble);
+  // };
+
   const updateScramble = () => {
     const newScramble = generateNewScramble();
+    const altered = transformScramble(newScramble, minMoves, maxMoves);
     setCurrentScramble(newScramble);
+    setAlteredScramble(altered);
   };
 
   const deleteSolve = (solveToDelete) => {
@@ -172,7 +185,7 @@ const App = () => {
   }, [caseToggles]);   // Only re-run the effect if caseToggles changes
 
   useEffect(() => {
-    setAlteredScramble(transformScramble(currentScramble));
+    setAlteredScramble(transformScramble(currentScramble, minMoves, maxMoves));
   }, [currentScramble]);
   
   const toggleCase = (caseType, caseName, caseIndex) => {
@@ -259,6 +272,26 @@ const App = () => {
     }
   };  
 
+  const handleMinMovesChange = (value) => {
+    const newMin = Number(value);
+    if (newMin <= stagedMaxMoves) {
+      setStagedMinMoves(newMin);
+    }
+  };
+
+  const handleMaxMovesChange = (value) => {
+    const newMax = Number(value);
+    if (newMax >= stagedMinMoves) {
+      setStagedMaxMoves(newMax);
+    }
+  };
+
+  const applyFaceMoves = () => {
+    setMinMoves(stagedMinMoves);
+    setMaxMoves(stagedMaxMoves);
+    updateScramble();
+  };
+
   return (
     <div className="grid grid-cols-3">
       <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4 h-24">
@@ -296,6 +329,11 @@ const App = () => {
         deleteSolve={deleteSolve}
         clearSolves={clearSolves}
         scrambles={scrambles} 
+        stagedMinMoves={stagedMinMoves}
+        stagedMaxMoves={stagedMaxMoves}
+        handleMinMovesChange={handleMinMovesChange}
+        handleMaxMovesChange={handleMaxMovesChange}
+        applyFaceMoves={applyFaceMoves}
       />
     </div>
   );

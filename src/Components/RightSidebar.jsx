@@ -1,6 +1,8 @@
 import React from 'react';
 
-const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves, scrambles }) => {
+const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves, 
+  scrambles, stagedMinMoves, stagedMaxMoves, handleMinMovesChange, handleMaxMovesChange, applyFaceMoves
+ }) => {
   const meanTime = solveTimes.length > 0 
     ? (
         solveTimes
@@ -22,6 +24,24 @@ const RightSidebar = ({ solveTimes, selectedSolve, onSelectSolve, deleteSolve, c
 
   return (
     <aside className="p-4">
+      <div>
+        <label htmlFor="minMoves">Min Moves:</label>
+        <input
+          type="number"
+          id="minMoves"
+          value={stagedMinMoves}
+          onChange={(e) => handleMinMovesChange(e.target.value)}
+        />
+        <label htmlFor="maxMoves">Max Moves:</label>
+        <input
+          type="number"
+          id="maxMoves"
+          value={stagedMaxMoves}
+          onChange={(e) => handleMaxMovesChange(e.target.value)}
+        />
+        <button onClick={applyFaceMoves}>Apply Face</button>
+      </div>
+      <hr className="my-4" />
       {selectedSolve ? (
         <div>
           <p>Scramble: {selectedSolve.scramble}</p>
