@@ -152,16 +152,9 @@ const App = () => {
     return newScramble;
   };
 
-  // const updateScramble = () => {
-  //   const newScramble = generateNewScramble();
-  //   setCurrentScramble(newScramble);
-  // };
-
   const updateScramble = () => {
     const newScramble = generateNewScramble();
-    const altered = transformScramble(newScramble, minMoves, maxMoves);
     setCurrentScramble(newScramble);
-    setAlteredScramble(altered);
   };
 
   const deleteSolve = (solveToDelete) => {
@@ -186,7 +179,7 @@ const App = () => {
 
   useEffect(() => {
     setAlteredScramble(transformScramble(currentScramble, minMoves, maxMoves));
-  }, [currentScramble]);
+  }, [currentScramble, maxMoves, minMoves]);
   
   const toggleCase = (caseType, caseName, caseIndex) => {
     const newToggles = { 
