@@ -6,7 +6,11 @@ const RightSidebar = ({
   scrambles, stagedMinMoves, stagedMaxMoves, handleMinMovesChange, handleMaxMovesChange, applyFaceMoves
 }) => {
   const meanTime = solveTimes.length > 0 
-    ? solveTimes.map(solve => parseFloat(solve.time)).reduce((acc, time) => acc + time, 0) / solveTimes.length
+    ? (
+        solveTimes
+          .map(solve => parseFloat(solve.time))
+          .reduce((acc, time) => acc + time, 0) / solveTimes.length
+      ).toFixed(2)
     : 0;
   
   const getCaseImageUrl = () => {
