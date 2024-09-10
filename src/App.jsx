@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { scrambles, transformScramble } from './Components/Scrambles';
 import ScrambleDisplay from './Components/ScrambleDisplay';
 import Timer from './Components/Timer';
@@ -66,6 +66,7 @@ const App = () => {
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [startTime, setStartTime] = useState(null);
+  const stopTriggered = useRef(false); // Using useRef to hold the flag state
 
   // Timer functions
   const startTimer = () => {
@@ -74,7 +75,6 @@ const App = () => {
       setIsActive(true);
     }
   };
-  
 
   const stopTimer = () => {
     if (!isActive) return;
@@ -109,26 +109,35 @@ const App = () => {
   }, [isActive, startTime]);
 
   useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (document.activeElement.tagName === 'INPUT') {
-        // If the active element is an input, ignore the space key for starting/stopping the timer
-        return;
-      }
-  
+    const handleKeyDown = (event) => {
       if (event.code === 'Space') {
         event.preventDefault();
-        if (!isActive && !scrambleError) {
-          startTimer();
-        } else if (isActive) {
+        if (isActive) {
           stopTimer();
+          stopTriggered.current = true; // Set the flag indicating the timer was stopped
         }
       }
     };
-  
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isActive, scrambleError]);
 
+    const handleKeyUp = (event) => {
+      if (event.code === 'Space') {
+        event.preventDefault();
+        if (!isActive && !stopTriggered.current) {
+          startTimer();
+        }
+        stopTriggered.current = false; // Reset the flag on key up
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [isActive]);
+  
   const generateNewScramble = () => {
     const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
       Object.entries(cases).flatMap(([caseName, toggles]) =>
