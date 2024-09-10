@@ -110,6 +110,10 @@ const App = () => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
+      if (document.activeElement.tagName === 'INPUT') {
+        // If the active element is an input, ignore the space key for starting/stopping the timer
+        return;
+      }
       if (event.code === 'Space') {
         event.preventDefault();
         if (isActive) {
@@ -120,6 +124,10 @@ const App = () => {
     };
 
     const handleKeyUp = (event) => {
+      if (document.activeElement.tagName === 'INPUT') {
+        // If the active element is an input, ignore the space key for starting/stopping the timer
+        return;
+      }
       if (event.code === 'Space') {
         event.preventDefault();
         if (!isActive && !stopTriggered.current) {
