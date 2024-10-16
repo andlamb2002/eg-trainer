@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { scrambles, transformScramble } from './Components/Scrambles';
-import ScrambleDisplay from './Components/ScrambleDisplay';
+import Header from './Components/Header';
 import Timer from './Components/Timer';
 import RightSidebar from './Components/RightSidebar';
 import LeftSidebar from './Components/LeftSidebar';
@@ -344,8 +344,8 @@ const App = () => {
 
     return (
         <div className="grid grid-cols-3">
-            
-            <ScrambleDisplay 
+
+            <Header 
                 scramble={scrambleError ? "Select at least one case." : alteredScramble}
                 updateScramble={updateScramble}
             />

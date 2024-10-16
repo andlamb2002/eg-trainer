@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScrambleDisplay = ({ scramble, updateScramble }) => (
+const Header = ({ scramble, updateScramble }) => (
     <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4 h-24">
         <div className="flex items-center space-x-4">
             <div className="text-3xl">Scramble: {scramble}</div>
@@ -14,4 +14,4 @@ const ScrambleDisplay = ({ scramble, updateScramble }) => (
     </header>
 );
 
-export default ScrambleDisplay;
+export default Header;
