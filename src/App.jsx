@@ -365,14 +365,9 @@ const App = () => {
                 deletePreset={deletePreset}  
             />   
 
-            <main className="flex justify-center font-bold text-6xl">
-                <Timer 
-                    timer={timer} 
-                    isActive={isActive} 
-                    startTimer={startTimer} 
-                    stopTimer={stopTimer} 
-                />
-            </main>
+            <Timer 
+                timer={timer} 
+            />
 
             <RightSidebar 
                 solveTimes={solveTimes}
