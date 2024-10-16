@@ -51,10 +51,10 @@ const App = () => {
     return localData ? JSON.parse(localData) : [];
   });
 
-  const [minMoves, setMinMoves] = useState(0);
-  const [maxMoves, setMaxMoves] = useState(0);
-  const [stagedMinMoves, setStagedMinMoves] = useState(0);
-  const [stagedMaxMoves, setStagedMaxMoves] = useState(0);
+  // const [minMoves, setMinMoves] = useState(0);
+  // const [maxMoves, setMaxMoves] = useState(0);
+  // const [stagedMinMoves, setStagedMinMoves] = useState(0);
+  // const [stagedMaxMoves, setStagedMaxMoves] = useState(0);
 
   useEffect(() => {
     localStorage.setItem('solveTimes', JSON.stringify(solveTimes));
@@ -194,9 +194,13 @@ const App = () => {
     updateScramble();  // This function now depends on caseToggles state
   }, [caseToggles]);   // Only re-run the effect if caseToggles changes
 
+  // useEffect(() => {
+  //   setAlteredScramble(transformScramble(currentScramble, minMoves, maxMoves));
+  // }, [currentScramble, maxMoves, minMoves]);
+
   useEffect(() => {
-    setAlteredScramble(transformScramble(currentScramble, minMoves, maxMoves));
-  }, [currentScramble, maxMoves, minMoves]);
+    setAlteredScramble(transformScramble(currentScramble));
+  }, [currentScramble]);
   
   const toggleCase = (caseType, caseName, caseIndex) => {
     const newToggles = { 
@@ -282,25 +286,25 @@ const App = () => {
     }
   };  
 
-  const handleMinMovesChange = (value) => {
-    const newMin = Number(value);
-    if (newMin <= stagedMaxMoves) {
-      setStagedMinMoves(newMin);
-    }
-  };
+  // const handleMinMovesChange = (value) => {
+  //   const newMin = Number(value);
+  //   if (newMin <= stagedMaxMoves) {
+  //     setStagedMinMoves(newMin);
+  //   }
+  // };
 
-  const handleMaxMovesChange = (value) => {
-    const newMax = Number(value);
-    if (newMax >= stagedMinMoves) {
-      setStagedMaxMoves(newMax);
-    }
-  };
+  // const handleMaxMovesChange = (value) => {
+  //   const newMax = Number(value);
+  //   if (newMax >= stagedMinMoves) {
+  //     setStagedMaxMoves(newMax);
+  //   }
+  // };
 
-  const applyFaceMoves = () => {
-    setMinMoves(stagedMinMoves);
-    setMaxMoves(stagedMaxMoves);
-    updateScramble();
-  };
+  // const applyFaceMoves = () => {
+  //   setMinMoves(stagedMinMoves);
+  //   setMaxMoves(stagedMaxMoves);
+  //   updateScramble();
+  // };
 
   return (
     <div className="grid grid-cols-3">
@@ -339,11 +343,11 @@ const App = () => {
         deleteSolve={deleteSolve}
         clearSolves={clearSolves}
         scrambles={scrambles} 
-        stagedMinMoves={stagedMinMoves}
-        stagedMaxMoves={stagedMaxMoves}
-        handleMinMovesChange={handleMinMovesChange}
-        handleMaxMovesChange={handleMaxMovesChange}
-        applyFaceMoves={applyFaceMoves}
+        // stagedMinMoves={stagedMinMoves}
+        // stagedMaxMoves={stagedMaxMoves}
+        // handleMinMovesChange={handleMinMovesChange}
+        // handleMaxMovesChange={handleMaxMovesChange}
+        // applyFaceMoves={applyFaceMoves}
       />
     </div>
   );

@@ -1,9 +1,10 @@
 import React from 'react';
-import RangeSlider from './RangeSlider';
+// import RangeSlider from './RangeSlider';
 
 const RightSidebar = ({
   solveTimes, selectedSolve, onSelectSolve, deleteSolve, clearSolves, 
-  scrambles, stagedMinMoves, stagedMaxMoves, handleMinMovesChange, handleMaxMovesChange, applyFaceMoves
+  scrambles, 
+  // stagedMinMoves, stagedMaxMoves, handleMinMovesChange, handleMaxMovesChange, applyFaceMoves
 }) => {
   const meanTime = solveTimes.length > 0 
     ? (
@@ -25,15 +26,15 @@ const RightSidebar = ({
 
   return (
     <aside className="p-4">
-      <RangeSlider
+      {/* <RangeSlider
         min={0}
         max={5}
         stagedMinMoves={stagedMinMoves}
         stagedMaxMoves={stagedMaxMoves}
         onMinChange={handleMinMovesChange}
         onMaxChange={handleMaxMovesChange}
-      />
-      <div className="flex justify-between space-x-2 my-2">
+      /> */}
+      {/* <div className="flex justify-between space-x-2 my-2">
         <input
           type="number"
           value={stagedMinMoves}
@@ -52,8 +53,8 @@ const RightSidebar = ({
         className="mt-4 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200 ease-in-out"
       >
         Apply Face
-      </button>
-      <hr className="my-4" />
+      </button> */}
+      {/* <hr className="my-4" /> */}
       {selectedSolve ? (
         <div>
           <p>Scramble: {selectedSolve.scramble}</p>
