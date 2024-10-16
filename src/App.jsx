@@ -8,8 +8,7 @@ import LeftSidebar from './Components/LeftSidebar';
 const App = () => {
 
     // Scramble States
-    const [currentScramble, setCurrentScramble] = useState('');
-    const [alteredScramble, setAlteredScramble] = useState('');
+    const [scramble, setScramble] = useState('');
     const [scrambleError, setScrambleError] = useState(false);
 
     // Toggle States
@@ -82,15 +81,6 @@ const App = () => {
         updateScramble();  
     }, [caseToggles]);  
 
-    // useEffect(() => {
-    //     setAlteredScramble(transformScramble(currentScramble, minMoves, maxMoves));
-    // }, [currentScramble, maxMoves, minMoves]);
-
-    // Update altered scramble when current scramble changes
-    useEffect(() => {
-        setAlteredScramble(transformScramble(currentScramble));
-    }, [currentScramble]);
-
     // Starts timer when isActive
     useEffect(() => {
         let interval = null;
@@ -143,36 +133,30 @@ const App = () => {
 
 
 
-    // Generate scramble based off toggles
-    const generateNewScramble = () => {
+    // Update scramble based on toggled cases
+    const updateScramble = () => {
         const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
             Object.entries(cases).flatMap(([caseName, toggles]) =>
                 toggles.map((toggle, index) => toggle ? { type, caseName, caseId: index } : null).filter(Boolean)
             )
         );
-      
+    
         if (filteredCases.length === 0) {
             setScrambleError(true);
+            setScramble('');  
             return;
         }
-      
+    
         setScrambleError(false);
-      
+    
         const selectedCase = filteredCases[Math.floor(Math.random() * filteredCases.length)];
         const caseDetails = scrambles[selectedCase.type][selectedCase.caseName][selectedCase.caseId];
         const newScramble = caseDetails.algs[Math.floor(Math.random() * caseDetails.algs.length)];
-        
-        
+    
         setCurrentCase(`${selectedCase.type} ${selectedCase.caseName} Case ${selectedCase.caseId + 1}`);
-        return newScramble;
+        setScramble(transformScramble(newScramble));  
     };
     
-    // Update to generated scramble
-    const updateScramble = () => {
-        const newScramble = generateNewScramble();
-        setCurrentScramble(newScramble);
-    };
-
 
     
     // Toggle one specific case
@@ -306,7 +290,7 @@ const App = () => {
       
         const newSolve = {
             time: finalTime,
-            scramble: alteredScramble,
+            scramble: scramble,
             caseType: currentCase 
         };
       
@@ -346,7 +330,7 @@ const App = () => {
         <div className="grid grid-cols-3">
 
             <Header 
-                scramble={scrambleError ? "Select at least one case." : alteredScramble}
+                scramble={scrambleError ? "Select at least one case." : scramble}
                 updateScramble={updateScramble}
             />
             
