@@ -344,12 +344,12 @@ const App = () => {
 
     return (
         <div className="grid grid-cols-3">
-            <header className="col-span-3 bg-gray-800 text-white flex items-center justify-center p-4 h-24">
-                <ScrambleDisplay 
-                    scramble={scrambleError ? "Select at least one case." : alteredScramble}
-                    updateScramble={updateScramble}
-                />
-            </header>
+            
+            <ScrambleDisplay 
+                scramble={scrambleError ? "Select at least one case." : alteredScramble}
+                updateScramble={updateScramble}
+            />
+            
             <LeftSidebar 
                 scrambles={scrambles} 
                 caseToggles={caseToggles} 
@@ -364,6 +364,7 @@ const App = () => {
                 editPreset={editPreset}  
                 deletePreset={deletePreset}  
             />   
+
             <main className="flex justify-center font-bold text-6xl">
                 <Timer 
                     timer={timer} 
@@ -372,6 +373,7 @@ const App = () => {
                     stopTimer={stopTimer} 
                 />
             </main>
+
             <RightSidebar 
                 solveTimes={solveTimes}
                 onSelectSolve={setSelectedSolve}
@@ -385,6 +387,7 @@ const App = () => {
                 // handleMaxMovesChange={handleMaxMovesChange}
                 // applyFaceMoves={applyFaceMoves}
             />
+
         </div>
     );
 };
