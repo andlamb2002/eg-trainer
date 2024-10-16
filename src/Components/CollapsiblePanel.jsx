@@ -5,12 +5,10 @@ const CollapsiblePanel = ({ label, cases, onToggleCase, onToggleAllCases }) => {
 
     const togglePanel = () => setIsOpen(!isOpen);
 
-    // Toggle individual case using the image
     const handleToggleCase = (index) => {
         onToggleCase(label, index);
     };
 
-    // Call the onToggleAllCases prop passed from the App.jsx
     const handleToggleAllCases = () => {
         onToggleAllCases(label);
     };
