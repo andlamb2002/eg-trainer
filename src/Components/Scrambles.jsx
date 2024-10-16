@@ -1,3 +1,4 @@
+// Alg to set up images of every case
 const imageScrambles = {
   A: [
     "L' U2 L U L' U L",
@@ -60,23 +61,52 @@ const imageScrambles = {
   ],
 };
 
+// Generate scramble image with alg
 export const generateCubeUrl = (alg, size = 150) => {
   const baseUrl = "https://visualcube.api.cubing.net/visualcube.php";
   const params = new URLSearchParams({
-    fmt: 'svg',  // Using SVG for better quality and scalability
-    size,        // Adjust size as needed
-    pzl: '2',    // Puzzle type for 2x2
-    view: 'plan', // Optional, for a flat view
-    bg: 't',      // Setting background to transparent
-    alg,         // Algorithm that represents the case visually
+    fmt: 'svg', 
+    size,        
+    pzl: '2',    
+    view: 'plan', // Flat view
+    bg: 't',      // Transparent bg
+    alg,         
   });
   return `${baseUrl}?${params.toString()}`;
 };
 
+// Gets URL based on case
 const getUrlForCase = (group, caseId) => {
-  return generateCubeUrl(imageScrambles[group][caseId - 1]); // Adjust index since caseId starts from 1
+  return generateCubeUrl(imageScrambles[group][caseId - 1]); 
 };
 
+// Creates face moves based on min/max
+// const generateFaceMoves = (minMoves, maxMoves) => {
+//     if (minMoves > maxMoves) return []; 
+
+//     const moves = ['R', 'U', 'F'];
+//     const suffixes = ['', '\'', '2'];
+
+//     let lastMove = '';
+//     const sequence = [];
+//     const moveCount = Math.floor(Math.random() * (maxMoves - minMoves + 1)) + minMoves;
+
+//     for (let i = 0; i < moveCount; i++) {
+//         let move = moves[Math.floor(Math.random() * moves.length)];
+//         while (
+//             (i === 0 && move === 'U') || move === lastMove ) {
+//                 move = moves[Math.floor(Math.random() * moves.length)];
+//             }
+
+//         const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+//         sequence.push(move + suffix);
+//         lastMove = move;
+//     }
+
+//     return sequence;
+// };
+
+// Image url and alg for all scramble cases
 export const scrambles = {
   CLL: {
     A: [
@@ -843,59 +873,37 @@ export const scrambles = {
   },
 };
   
-  export const transformScramble = (scramble, minMoves, maxMoves) => {
+// Inverses scramble and adds random U moves to beginning and end
+export const transformScramble = (scramble) => {
     const invertScramble = (scramble) => {
-      if (!scramble) return '';
-      let moves = scramble.split(' ');
-      let inversedMoves = moves.map(move => {
-        if (move.includes("'")) {
-          return move.replace("'", "");
-        } else if (move.includes("2")) {
-          return move;
-        } else {
-          return move + "'";
-        }
-      });
-      return inversedMoves.reverse().join(' ');
+        if (!scramble) return '';
+        let moves = scramble.split(' ');
+        let inversedMoves = moves.map(move => {
+            if (move.includes("'")) {
+                return move.replace("'", "");
+            } else if (move.includes("2")) {
+                return move;
+            } else {
+                return move + "'";
+            }
+        });
+        return inversedMoves.reverse().join(' ');
     };
   
     const addRandomU = (moveSet) => {
-      const options = ["", "U", "U'", "U2"];
-      const start = options[Math.floor(Math.random() * options.length)];
-      const end = options[Math.floor(Math.random() * options.length)];
-      return `${start} ${moveSet} ${end}`.trim();
+        const options = ["", "U", "U'", "U2"];
+        const start = options[Math.floor(Math.random() * options.length)];
+        const end = options[Math.floor(Math.random() * options.length)];
+        return `${start} ${moveSet} ${end}`.trim();
     };
   
     const inversed = invertScramble(scramble);
     const transformedScramble = addRandomU(inversed);
-    const faceMoves = generateFaceMoves(minMoves, maxMoves).join(' ');
-    const finalScramble = faceMoves ? `${transformedScramble} [${faceMoves}]` : transformedScramble;
-    return finalScramble.trim();
-  };
+    return transformedScramble;
 
-const generateFaceMoves = (minMoves, maxMoves) => {
-  if (minMoves > maxMoves) return []; // Basic validation
-
-  const moves = ['R', 'U', 'F'];
-  const suffixes = ['', '\'', '2'];
-
-  let lastMove = '';
-  const sequence = [];
-  const moveCount = Math.floor(Math.random() * (maxMoves - minMoves + 1)) + minMoves;
-
-  for (let i = 0; i < moveCount; i++) {
-    let move = moves[Math.floor(Math.random() * moves.length)];
-    while (
-      (i === 0 && move === 'U') ||
-      move === lastMove 
-    ) {
-      move = moves[Math.floor(Math.random() * moves.length)];
-    }
-
-    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-    sequence.push(move + suffix);
-    lastMove = move;
-  }
-
-  return sequence;
+    // const faceMoves = generateFaceMoves(minMoves, maxMoves).join(' ');
+    // const finalScramble = faceMoves ? `${transformedScramble} [${faceMoves}]` : transformedScramble;
+    // return finalScramble.trim();
 };
+
+
