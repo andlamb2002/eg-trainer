@@ -354,15 +354,15 @@ const App = () => {
                 scrambles={scrambles} 
                 caseToggles={caseToggles} 
                 toggleCase={toggleCase}
-                toggleAllCases={toggleAllCases} // Pass toggleAllCases as a prop
-                toggleAllCasesByType={toggleAllCasesByType} // Pass toggleAllCasesByType as a prop
+                toggleAllCases={toggleAllCases} 
+                toggleAllCasesByType={toggleAllCasesByType} 
                 presets={presets}
                 presetName={presetName}
                 setPresetName={setPresetName}
                 savePreset={savePreset}
-                loadPreset={loadPreset}  // Pass the function as a prop
-                editPreset={editPreset}  // Pass the function as a prop
-                deletePreset={deletePreset}  // Pass the function
+                loadPreset={loadPreset}  
+                editPreset={editPreset}  
+                deletePreset={deletePreset}  
             />   
             <main className="flex justify-center font-bold text-6xl">
                 <Timer 
