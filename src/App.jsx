@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { scrambles, transformScramble } from './Components/Scrambles';
+import scrambles from './Assets/Scrambles.json';
 import Header from './Components/Header';
 import Timer from './Components/Timer';
 import RightSidebar from './Components/RightSidebar';
@@ -133,6 +133,24 @@ const App = () => {
 
 
 
+    // Apply U moves to beginning and end of scramble
+    const transformScramble = (scramble) => {
+  
+        const addRandomU = (moveSet) => {
+            const options = ["", "U", "U'", "U2"];
+            const start = options[Math.floor(Math.random() * options.length)];
+            const end = options[Math.floor(Math.random() * options.length)];
+            return `${start} ${moveSet} ${end}`.trim();
+        };
+      
+        const finalScramble = addRandomU(scramble);
+        return finalScramble;
+
+        // const faceMoves = generateFaceMoves(minMoves, maxMoves).join(' ');
+        // const finalScramble = faceMoves ? `${transformedScramble} [${faceMoves}]` : transformedScramble;
+        // return finalScramble.trim();
+    };
+    
     // Update scramble based on toggled cases
     const updateScramble = () => {
         const filteredCases = Object.entries(caseToggles).flatMap(([type, cases]) =>
@@ -322,6 +340,31 @@ const App = () => {
     //     setMinMoves(stagedMinMoves);
     //     setMaxMoves(stagedMaxMoves);
     //     updateScramble();
+    // };
+
+    // const generateFaceMoves = (minMoves, maxMoves) => {
+    //     if (minMoves > maxMoves) return []; 
+    
+    //     const moves = ['R', 'U', 'F'];
+    //     const suffixes = ['', '\'', '2'];
+    
+    //     let lastMove = '';
+    //     const sequence = [];
+    //     const moveCount = Math.floor(Math.random() * (maxMoves - minMoves + 1)) + minMoves;
+    
+    //     for (let i = 0; i < moveCount; i++) {
+    //         let move = moves[Math.floor(Math.random() * moves.length)];
+    //         while (
+    //             (i === 0 && move === 'U') || move === lastMove ) {
+    //                 move = moves[Math.floor(Math.random() * moves.length)];
+    //             }
+    
+    //         const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+    //         sequence.push(move + suffix);
+    //         lastMove = move;
+    //     }
+    
+    //     return sequence;
     // };
 
 

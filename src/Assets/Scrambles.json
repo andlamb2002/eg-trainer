@@ -1,0 +1,803 @@
+{
+    "CLL": {
+        "A": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=L%27+U2+L+U+L%27+U+L",
+                "algs": [
+                    "R' F2 R U R' F R",
+                    "F R U R' U' F' R' F' U' F U R",
+                    "F U R U' R' F' R' U' F' U F R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R%27+U+R+U%27+R%27+F+R%27+F%27+R2+U+R%27+U%27+R",
+                "algs": [
+                    "R U R' U' R' F R F' R U' R' F R' F' R",
+                    "F' U R' F' R U F U' R U R'",
+                    "R U R' F' R U R' U R U2 R' F R U' R'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=L%27+U2+L+U2+L+F%27+L%27+F",
+                "algs": [
+                    "F R' F' R U R U2 R' F R' F' R",
+                    "R' F2 R U2 R U' R' F",
+                    "R' F' R U R U' R' F2 U R U' R' F'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+R+U%27+R%27+F+R%27+F%27+R",
+                "algs": [
+                    "R' F' R U R U' R' F R U R' U' R' F R F'",
+                    "F2 U2 F' U2 F2 R' U2 R U2 F R F'",
+                    "F2 U2 F U2 F2 R' U2 R U2 F R F'"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F+U2+R+U+R%27+U2+R%27+F%27+R2+U2",
+                "algs": [
+                    "R' F' R2 U R' F' R' F R2 U' R'",
+                    "F R' U2 R F' R' F U2 F' R",
+                    "F R' F' R U' F U R' F R U' F'"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F+R%27+F%27+R+U2+R+U2+R%27",
+                "algs": [
+                    "F R F' R' U R U F R2 F'",
+                    "F U R U' R2 F' R U R U' R'",
+                    "R F' U' F R' U' R F R F' R U R' U' R'"
+                ]
+            }
+        ],
+        "F": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U%27+R%27+F+R2+U%27+R%27+U%27+R+U+R%27+F%27",
+                "algs": [
+                    "R2 F2 R U R' F2 R F' R",
+                    "R' F R' F2 R U' R' F2 R2",
+                    "R2 F2 R F R' F2 R U' R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R+U%27+R%27+U%27+R+U+R%27+F%27+R+U+R%27+U%27+R%27+F+R+F%27",
+                "algs": [
+                    "R' F R' F2 R U' F R' F2 R U' R",
+                    "F2 U' R U' R' U F2 U R U R'",
+                    "R' U R' F2 R F' U R' F2 R F' R"
+                ]
+            }
+        ],
+        "H": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R2+U2+R%27+U2+R2",
+                "algs": [
+                    "R' F' R U' R' F R U' R' F2 R",
+                    "R U' R' F R' F' R F R' F' U2 R' U2 R",
+                    "F2 R' F' R U' R U R' U F' R' F2 R U R' F R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+U+R+U%27+R%27+U+R+U%27+R%27+U+R+U%27+R%27+F%27",
+                "algs": [
+                    "R' F R F' R U R2 F R F' R U R'",
+                    "R U' R' F R' F' R2 U' R' F R' F' R",
+                    "R2 F R2 F2 U2 F R2"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F+R+F%27+R+U%27+R%27+U%27+R+U%27+R%27",
+                "algs": [
+                    "R U' R' F R' F R U R' F R",
+                    "R' U R' F' R2 U2 F' R U R'",
+                    "F' R U' R' F2 U2 R' F R F'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+F+R2+U%27+R2+U+R2+U+R2+F%27",
+                "algs": [
+                    "F U R U' R' U R U2 R' U' R U R' F'",
+                    "R U R U' R' F R' U R U' R' F'",
+                    "R U' R U' R' U R' F R2 F'"
+                ]
+            }
+        ],
+        "L": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+R%27+F%27+R+U+R+U%27+R%27+F+U%27",
+                "algs": [
+                    "F R U' R' U R U R' F'",
+                    "R F U' R U F' R' F'",
+                    "F R F' R U R' U' R'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U%27+R%27+F+R+F%27",
+                "algs": [
+                    "R U R' F2 R U R' U' F",
+                    "F R' F' R U R U R' U' R U' R'",
+                    "R U2 R' U2 R' F R U R U' R' F'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+F+R%27+F%27+R2+U2+R%27",
+                "algs": [
+                    "R2 F' R U R U' R' F R U' R' U R",
+                    "R U R2 F2 R F R' F2 R",
+                    "R' F2 R2 U' R' F R' F2 R"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R2+U+R%27+U%27+R+U+R%27+U2+R+U%27+R+U%27",
+                "algs": [
+                    "F2 R' F' R U' R U R' U F'",
+                    "R' F2 R U R' F' R U R' F' R U R' F R",
+                    "F R' F' R F' U R' F R U2 F"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F+R%27+F2+R+U%27+R%27+F2+R2+U2+R%27+U%27",
+                "algs": [
+                    "R U' R2 F R F' R U R' U' R U R'",
+                    "R2 U' F R2 F' U R U2 R",
+                    "F R' F2 R U' R U2 R2 F2 R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U2+R+U+R2+F%27+R+U+R+U%27+R%27+F+R+U",
+                "algs": [
+                    "F' R' F R2 U R' U' R' F R2 U' R'",
+                    "F R U R' U F' U2 F' R U R'",
+                    "R' U R' F R F' R U2 R' U R"
+                ]
+            }
+        ],
+        "P": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R2+U+R2+U+R2+U%27+R",
+                "algs": [
+                    "R' U' F' U F U' F' U F R",
+                    "R' F R F' R U R2 U2 R U2 F R F'",
+                    "F R U' R' U2 R U R' F' R' F' U' F U R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U+R%27+U2+R+U+R%27+F+R%27+F%27+R+U+R+U",
+                "algs": [
+                    "R2 U R' F R' F' U R U' R2",
+                    "R2 U2 R U2 R2 F U R U' R' F'",
+                    "R' U' R' F R F' R U' R' U2 R"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F%27+R+U%27+R%27+F%27+R+F%27+R+U+R%27",
+                "algs": [
+                    "R' F' R U' R' F' R F' R U R'",
+                    "F' R U R' U' R' F U2 R U R' U R",
+                    "R U R' U R U R' F R' F' R"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R2+U%27+R2+U%27+R2+U+R2+F%27+U%27",
+                "algs": [
+                    "F R2 F' R U' R U R' U R'",
+                    "R U2 R2 F R F' U2 R' F R F'",
+                    "R' F2 R2 U' R' F U2 R U' R' F"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R%27+F%27+R+U2+R+U%27+R%27+U+R+U2+R%27",
+                "algs": [
+                    "R' F2 R U R' F' R U2 R U' R' F",
+                    "F' R2 F U2 R2 F' U R U R2",
+                    "R' F R F' R U R2 U' R U' R' U2 R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U2+R%27+U%27+R+U+R%27+U2+R%27+F+R+F%27+U%27",
+                "algs": [
+                    "F' U R U R' U2 F R' F2 R",
+                    "R U R' U' R' F R2 U R' U' R U R' U' F'",
+                    "R U2 R' F2 U R' F2 R U F'"
+                ]
+            }
+        ],
+        "S": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+U%27+R+U%27+R%27",
+                "algs": [
+                    "R' F' R U' R' F2 R",
+                    "R' U' F' U F R F U R U' R' F'",
+                    "R' F' U' F U R F R U R' U' F'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R2+U+R+U2+R%27+F+R2+F%27+R+U",
+                "algs": [
+                    "R' U R U' R2 F R F' R U R' U' R",
+                    "F U' R U R' U' F' U R' F' R",
+                    "R U' R2 U R U F R2 F' R"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+U2+R%27+F+R+F%27",
+                "algs": [
+                    "F' R U R' U' R' F2 R F' R U R'",
+                    "F' U' F U' F' U2 F R U R' U' R' F R F'",
+                    "R2 U2 R' U2 R2 F R' F' R U R U' R'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+L%27+U+L+F%27+R+U+R%27",
+                "algs": [
+                    "F' R U R' F U F'",
+                    "F' R U R' U' R' F R F R' F' R U R U' R'",
+                    "R U R U' R' F R2 F' U2 R' U2 R"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U+R2+F%27+R+F+R+U%27+R2+F+R+U%27",
+                "algs": [
+                    "F' R U R' U' R U2 R' F' R U2 R'",
+                    "R2 F' U' R2 F' R2 U F R2",
+                    "R U R2 F' R F R U' R2 F R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F%27+L+F+L%27+U2+L%27+U2+L",
+                "algs": [
+                    "F R U' R' U R U2 R' U' F'",
+                    "F' R U R' U2 R' F2 R",
+                    "R' F' R U R U' R' F R' F' U' F U R"
+                ]
+            }
+        ],
+        "T": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R%27+F%27+R+U+R+U%27+R%27",
+                "algs": [
+                    "F R' F' U' R' U R",
+                    "R U R' U' R' F R U F' U F U2 F'",
+                    "R U R' U' R' F R U R U' R' F'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U+R+U%27+R%27+F+R%27+F%27",
+                "algs": [
+                    "F R U' R' U' R U R' F'",
+                    "F' R U R' U' R' F R",
+                    "R' F' R U R U' R' F2 R U R' U' F'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R%27+F2+U+R+U2+R%27+U+F%27+U%27",
+                "algs": [
+                    "R U2 R' U' R U R' F R' F' R2 U2 R'",
+                    "R2 U2 R' U2 R' F R F' U' R'",
+                    "R2 U R' F R' F' R U' R U R"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U+R+U+R2+U%27+R+U2+R%27+U2+R+U%27+R+U",
+                "algs": [
+                    "R' U F' R U' R' F2 U2 R",
+                    "R' F2 R U R' F R2 U2 R' U' R U' R'",
+                    "F2 R U' R' U R U R2 F' R F'"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R+U%27+R%27+U+R+U+R%27+U+R+U%27+R%27+F%27+U",
+                "algs": [
+                    "R U' R' F' U F R U R' U R U' R'",
+                    "F R' F' R U' R U' R' U2 R U' R'",
+                    "R2 F R F' R' F2 R U R' F R2"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R%27+F+R%27+F%27+R2+U2+R%27+U%27+R+U%27",
+                "algs": [
+                    "R' U R' F' R2 U2 R' F' R",
+                    "F' R2 U2 R' F' R U2 R' U R'",
+                    "R2 U' R' U R2 U' F R' F'"
+                ]
+            }
+        ],
+        "U": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+U+R+U%27+R%27+F%27",
+                "algs": [
+                    "R' U' R' F R F' U R",
+                    "F R U' R' U2 R U R' F'",
+                    "R' U' F R' F' R U R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U+R%27+U2+R+U2+R%27+U+R2+U%27+R%27+U",
+                "algs": [
+                    "R2 U' R' U F' R U' R' F2 R2",
+                    "R' F2 U2 R U R' U F' R",
+                    "R' U R' F R2 U2 R' U' R' F2 R2"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F%27+R+U+R%27+F+U2+R+U%27+R%27+F%27+U",
+                "algs": [
+                    "F' U F2 R F' R U R' U2 R'",
+                    "R' F2 U' R U' R' U F2 U R",
+                    "F R U R' U2 F' R U' R' F"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U2+R+U+R%27+U+R%27+F+R+F%27",
+                "algs": [
+                    "R2 F' R U' R' F2 R F R' F' R2",
+                    "R U R' U' R U' R' F' U' F R U R'",
+                    "F R' U' R F' R' U F' R"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R%27+U+R+U%27+R%27+F+R%27+F%27+R2+U+R%27+U%27",
+                "algs": [
+                    "R' F2 R F R' F2 R U' R U2 R'",
+                    "R2 U R' F' R U R' U' R' F R2 U' R2",
+                    "F U' R U R' U2 F' U R' F' R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U%27+R+U2+R%27+F+R%27+F%27+R+U%27+R+U%27",
+                "algs": [
+                    "R' F' R U R U' R2 U R U F R'",
+                    "R' F R U' R' F R F' R U R2 F' R",
+                    "R' F' R U R' U' R' F R2 U' R' U2 R"
+                ]
+            }
+        ]
+    },
+    "EG1": {
+        "A": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=L%27+U2+L+U+L%27+U+L",
+                "algs": [
+                    "R U' R2 F' R F U R' F R",
+                    "R U R' U F R U' R2 F' R",
+                    "R U' R2 F' R F U R' F R"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R%27+U+R+U%27+R%27+F+R%27+F%27+R2+U+R%27+U%27+R",
+                "algs": [
+                    "F' U R' U2 R' F2 U R'",
+                    "R U' R' F U' R' F R U' R U R' F'",
+                    "R U R' F2 U F R U R'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=L%27+U2+L+U2+L+F%27+L%27+F",
+                "algs": [
+                    "F' R U2 R2 F' R U2 R U R'",
+                    "R' F R2 U' R' U R U' R' F",
+                    "F' R U2 R2 F' R U2 R U R'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+R+U%27+R%27+F+R%27+F%27+R",
+                "algs": [
+                    "F' R' F R2 U R' U' F R' F' R",
+                    "R' F' R F' R' F R U2 R U' R'",
+                    "F' U R U' R' U F R U R'"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F+U2+R+U+R%27+U2+R%27+F%27+R2+U2",
+                "algs": [
+                    "F R U' R' U' R' F' R U R' F' R",
+                    "R U R' F R U' R' U R' F2 R",
+                    "R U' R' U R U' R' U' R' F' R F"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F+R%27+F%27+R+U2+R+U2+R%27",
+                "algs": [
+                    "F R' F' R U R U2 R2 F R2 U' R'",
+                    "F R' F' R U R' F' R2 U R'",
+                    "F R' F' R U R U2 R2 F R2 U' R'"
+                ]
+            }
+        ],
+        "F": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U%27+R%27+F+R2+U%27+R%27+U%27+R+U+R%27+F%27",
+                "algs": [
+                    "R2 U F2 U2 R2 U R2",
+                    "R2 U' R2 U2 F2 U' R2",
+                    "R2 U F2 U2 R2 U R2"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R+U%27+R%27+U%27+R+U+R%27+F%27+R+U+R%27+U%27+R%27+F+R+F%27",
+                "algs": [
+                    "R' U' R' U F2 R U R U R'",
+                    "R' F U' R2 U F' R",
+                    "R U' R' U' R' F2 U' R U R"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=",
+                "algs": [
+                    "F2 R' F' U F U' F' U' F2 R F' U' F' U F'",
+                    "F U' F U F R' F2 U F U F' U' F R F2",
+                    "F2 U F U2 F' U2 F R' F' U' F U F R"
+                ]
+            }
+        ],
+        "H": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R2+U2+R%27+U2+R2",
+                "algs": [
+                    "F' R' F R F R' F' R2 U R'",
+                    "R U' R2 F R F' R' F' R F",
+                    "R U' R F' R' F R2 F"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+U+R+U%27+R%27+U+R+U%27+R%27+U+R+U%27+R%27+F%27",
+                "algs": [
+                    "F2 U F' U F U' F U F' U F2",
+                    "R' U' F2 U F' R2 U R' F'",
+                    "R U' R' U' R' F2 R2 U R' U R U R'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F+R+F%27+R+U%27+R%27+U%27+R+U%27+R%27",
+                "algs": [
+                    "F R' F U' F2 R U R",
+                    "F R' F2 R F2 R U R' U2 F'",
+                    "F R' F2 R F U2 F' R U R'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+F+R2+U%27+R2+U+R2+U+R2+F%27",
+                "algs": [
+                    "F2 U' F R' F' R U' F",
+                    "F R' F' R U R' F' R F R' F' R",
+                    "F R' F R U' F U2 F"
+                ]
+            }
+        ],
+        "L": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+R%27+F%27+R+U+R+U%27+R%27+F+U%27",
+                "algs": [
+                    "F' R' F R2 U R' U' R U R'",
+                    "R U' R' U2 R U2 R' F R U' R'",
+                    "R U' R' F R U' R' F R U R' F'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U%27+R%27+F+R+F%27",
+                "algs": [
+                    "F R U' R2 F' R U R' F' R",
+                    "R U2 R' U' R' F' R F R' F' R",
+                    "R' F2 R F R' F R F R' F R"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+F+R%27+F%27+R2+U2+R%27",
+                "algs": [
+                    "R U R2 F' U R2 U R2 U' R",
+                    "R' U2 R2 U R2 U R2 U R2 F R2 U' R'",
+                    "R' F2 R U R U R2 F' U2 R U R' U R"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R2+U+R%27+U%27+R+U+R%27+U2+R+U%27+R+U%27",
+                "algs": [
+                    "R' F R2 U R' F' R U2 R'",
+                    "R U2 R' F R U' R2 F' R",
+                    "R' F R2 U R' F' R U2 R'"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F+R%27+F2+R+U%27+R%27+F2+R2+U2+R%27+U%27",
+                "algs": [
+                    "R' F R F' U R U' R' F R U' R'",
+                    "R U' R' U R U' R' U R' F' R F",
+                    "F2 U F' U2 F' R' F' R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U2+R+U+R2+F%27+R+U+R+U%27+R%27+F+R+U",
+                "algs": [
+                    "R' F R U' R' F R U' R U R' F'",
+                    "F' R2 U R' U2 R' F' U2 R",
+                    "R' F R U' R' F R U F' R' F R"
+                ]
+            }
+        ],
+        "P": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R2+U+R2+U+R2+U%27+R",
+                "algs": [
+                    "R U' R' F2 U R' F' R U F'",
+                    "F' U R U' R' U2 R U' R' F2",
+                    "R U' R' F2 U R' F' R U F'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U+R%27+U2+R+U+R%27+F+R%27+F%27+R+U+R+U",
+                "algs": [
+                    "R' F' R2 U R2 F' R",
+                    "F2 U F' U2 F' U F U' F'",
+                    "R U R2 F' R2 U R'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+F%27+R+U%27+R%27+F%27+R+F%27+R+U+R%27",
+                "algs": [
+                    "R' F R F' U2 F R U2 R' F",
+                    "R' U' R' F2 U F' R F'",
+                    "R' F R F' U2 F R U2 R' F"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R2+U%27+R2+U%27+R2+U+R2+F%27+U%27",
+                "algs": [
+                    "R U' R' F R U' R' U R U' R' F",
+                    "R U R' F' R U R' U' R U R'",
+                    "R U' R' F R U' R' U R U' R' F"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R%27+F%27+R+U2+R+U%27+R%27+U+R+U2+R%27",
+                "algs": [
+                    "F R' F' R U R U R' U' R' F' R2 U R'",
+                    "F R U' R' F R U2 R' U F'",
+                    "R' F2 U2 R' U F2 R U R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U2+R%27+U%27+R+U+R%27+U2+R%27+F+R+F%27+U%27",
+                "algs": [
+                    "R U R' U R U' R2 F' R F R' F' R",
+                    "F U' R U2 R' F' R U R' F'",
+                    "R U' R2 F R U R U' R' U' R' F R F'"
+                ]
+            }
+        ],
+        "S": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+U%27+R+U%27+R%27",
+                "algs": [
+                    "R' F' R U' F' R' F R2 U R'",
+                    "R' F R2 U R' F' U' R U' R'",
+                    "R' F' R U' F' R' F R2 U R'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R2+U+R+U2+R%27+F+R2+F%27+R+U",
+                "algs": [
+                    "R' F' R F2 U' F' R' F' R",
+                    "R' F R U' R U R' F' R' F R F'",
+                    "R U' R' F' U' F2 R U' R'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U2+R%27+U2+R%27+F+R+F%27",
+                "algs": [
+                    "F R' F2 R2 U R' U2 R' F' R",
+                    "R U' R2 F R U' R' F R F'",
+                    "F R' F2 R2 U R' U2 R' F' R"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+L%27+U+L+F%27+R+U+R%27",
+                "algs": [
+                    "R U' R' F' U' R U R' U' F",
+                    "R' F R F' U R U' R2 F' R F",
+                    "R U' R' F' U' R U R' U' F"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U+R2+F%27+R+F+R+U%27+R2+F+R+U%27",
+                "algs": [
+                    "F2 U R' U R' U F' R2",
+                    "R U R' F' U' R U R' U' R U R'",
+                    "F2 U R' U R' U F' R2"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U2+F%27+L+F+L%27+U2+L%27+U2+L",
+                "algs": [
+                    "R F' U' F R' U' F' R2 U R2 F' R",
+                    "F' R U R' U' R U R2 F' R",
+                    "R F' U' F R' U' F' R2 U R2 F' R"
+                ]
+            }
+        ],
+        "T": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R%27+F%27+R+U+R+U%27+R%27",
+                "algs": [
+                    "F' R U2 R' F' R2 U R' U' R2",
+                    "R' F R F' R' F R U R U2 R'",
+                    "F' R U2 R' F' R2 U R' U' R2"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R+U+R+U%27+R%27+F+R%27+F%27",
+                "algs": [
+                    "R U' R' F R U R' F' R U2 R'",
+                    "F R U' R' F' R U R' F' R U R'",
+                    "R U' R' U R U' R2 F' R F"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R%27+F2+U+R+U2+R%27+U+F%27+U%27",
+                "algs": [
+                    "R U' R2 F R U R U2 R'",
+                    "R' F2 R U R U R2 F' R",
+                    "R U2 R' U' R' F' R2 U R'"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U+R+U+R2+U%27+R+U2+R%27+U2+R+U%27+R+U",
+                "algs": [
+                    "R U R' F' U' R U R' U' F R' F' R",
+                    "R' U F' U R2 U R2 F' U' R",
+                    "R U R' F' U' R U R' U' F R' F' R"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+R+U%27+R%27+U+R+U+R%27+U+R+U%27+R%27+F%27+U",
+                "algs": [
+                    "R U' R' F R U' R2 F R",
+                    "R' F R F' R' F R2 U' R'",
+                    "R U' R' F R U' R2 F R"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=U%27+R%27+F+R%27+F%27+R2+U2+R%27+U%27+R+U%27",
+                "algs": [
+                    "R' U' R' F2 U F2 U' R' U R",
+                    "R U R' U F' R U' R' F' R U' R'",
+                    "F' R U2 R' F' U2 R U R'"
+                ]
+            }
+        ],
+        "U": [
+            {
+                "caseId": 1,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F+U+R+U%27+R%27+F%27",
+                "algs": [
+                    "R U R2 F' R2 U' R' U' R U' R'",
+                    "F U' F U F' U F U F2",
+                    "F2 U' F' U2 F' U2 F'"
+                ]
+            },
+            {
+                "caseId": 2,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U+R%27+U2+R+U2+R%27+U+R2+U%27+R%27+U",
+                "algs": [
+                    "R' F R F' U R U' R' U F R U' R'",
+                    "R2 F2 U F R2 F R2 F",
+                    "R' F R F U F' R U R' F'"
+                ]
+            },
+            {
+                "caseId": 3,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=F%27+R+U+R%27+F+U2+R+U%27+R%27+F%27+U",
+                "algs": [
+                    "F' U2 R U2 R' U2 F",
+                    "R' F2 R2 U' R' U R U' R' F U' R U' R'",
+                    "F' U' F R' F2 R F' U F"
+                ]
+            },
+            {
+                "caseId": 4,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U+R%27+U2+R+U+R%27+U+R%27+F+R+F%27",
+                "algs": [
+                    "R' F' R2 U R' F' R U R'",
+                    "R U R2 F' R F R' F' R",
+                    "R' F' R2 U R' F' R U R'"
+                ]
+            },
+            {
+                "caseId": 5,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R+U%27+R%27+U+R+U%27+R%27+F+R%27+F%27+R2+U+R%27+U%27",
+                "algs": [
+                    "R U R' F' R U R' U' F R' F' R",
+                    "F U2 F R' F2 R U F'",
+                    "F U2 F2 U R U2 R' F2"
+                ]
+            },
+            {
+                "caseId": 6,
+                "url": "https://visualcube.api.cubing.net/visualcube.php?fmt=svg&size=150&pzl=2&view=plan&bg=t&alg=R%27+U%27+R+U2+R%27+F+R%27+F%27+R+U%27+R+U%27",
+                "algs": [
+                    "F R U' R' U R' F' R U R' F' R",
+                    "F U' F' U' R U R2 F' R",
+                    "F' U2 F' R U2 R' U' F"
+                ]
+            }
+        ]
+    }
+}
