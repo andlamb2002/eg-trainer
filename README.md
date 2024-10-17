@@ -7,6 +7,7 @@ My name is Andreas Lambropoulos and this is my personal project designed as a 2x
 - **React Frontend**
 - **Tailwind CSS**
 - **LocalStorage**
+- **VisualCube API**
 
 ## Current Features
 - **Case Toggles**: Ability to toggle specific CLL/EG1 cases.
@@ -17,7 +18,9 @@ My name is Andreas Lambropoulos and this is my personal project designed as a 2x
 - **Presets**: Name and save presets of specific cases.
 
 ## Future Implemntations
-- **Add Face**: Apply 0-5 move face before EG case. Designed for one-look practice.
 - **EG2 Cases**: Scrambles options for EG2.
+- **Recap Button**: Recap of all toggled cases.
+- **Stop Timer with Any Key**: For better user experience.
+- **Add Face**: Apply specific moves before EG cases. Designed for one-look practice.
 - **Settings**: Customizations for font size, color, timer, keyboard shortcuts, etc.
 - **Overall Design/Layout**: Redesign of entire app.
